@@ -1,0 +1,46 @@
+body {
+	background-color:black;
+	color:white;
+}
+
+canvas {
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	background-color:#3e3e3e;
+	border-radius:5px;
+}
+
+.gameWidget {
+	position:absolute;
+	float:left;
+	font-size:30px;
+	font-weight:900;
+	margin-top:10%;
+	font-family:Georgia;
+	margin-left:5%;
+	text-align:center;
+}
+
+.gameWidget #scoreCount {
+	color:yellow;
+	font-size:32px;
+}
+
+.moreSpaceTop{
+	margin-top:50%;
+}
+
+#msg {
+	position:absolute;
+	transform:translate(-50%,-50%);
+	left:50%;
+	top:50%;
+	border-radius:5px;
+	font-size:30px;
+	font-weight:900;
+	padding:3%;
+	color:red;
+	border:3px solid rgb(245, 233, 233);
+}

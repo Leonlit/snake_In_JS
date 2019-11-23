@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>snake game - by leonlit</title>
+		<meta charset="UTF-8">
+		<meta name="author" content="leonlit">
+		<meta name="description" content="A simple snake game using pure CSS, HTML and Javascript">
+		<meta name="keywords" content="HTML, CSS, JS, Snake Game, Leonlit, Side Project, Hobby project">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/desktop.css"></link>
+	</head>
+	<body>
+		<div class="gameWidget">
+			<div clas="gameWidgetSection">Score : <div id="scoreCount" class="">0</div></div>
+			<div class="gameWidgetSection moreSpaceTop">Time : <div id="timer" class="">-- : -- : --</div></div>
+		</div>
+		 
+		<canvas id ="canvas" width="600" height="600"></canvas>
+		<div id="msg">Game Over</div>
+	</body>
+</html>
+
+<script src="script/utility.js"></script>
+<script src="script/snake.js"></script>
+<script src="script/draw.js"></script>
+<script src="script/fruit.js"></script>
