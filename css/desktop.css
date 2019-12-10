@@ -32,15 +32,21 @@ canvas {
 	margin-top:50%;
 }
 
-#msg {
+.onboardMsg {
 	position:absolute;
 	transform:translate(-50%,-50%);
 	left:50%;
 	top:50%;
 	border-radius:5px;
-	font-size:30px;
+	font-size:50px;
 	font-weight:900;
 	padding:3%;
+	color:white;
+	font-family:monospace;
+	visibility:;
+	text-align:center;
+}
+
+.alertMsg {
 	color:red;
-	border:3px solid rgb(245, 233, 233);
 }

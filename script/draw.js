@@ -23,13 +23,14 @@ window.onload = () => {
 		if (event.keyCode == 32) {
 			if (gameStatus == 0) {
 				start();
+				
 			}
 		}
 	})
 }
 
 let start = () => {
-	
+	document.getElementsByClassName("onboardMsg")[1].style.visibility = "hidden";
 	gameStatus = 1;
 	
 	food = new Food();
@@ -76,11 +77,20 @@ let reset = () => {
 	scoreCont.innerHTML = 0;
 	timerCont.innerHTML = `0 : 0 : 0`;
 	
-	console.log("resetted")
-	start();
+	console.log("resetted");
+	document.getElementsByClassName("onboardMsg")[0].style.visibility = "hidden";
+	document.getElementsByClassName("onboardMsg")[1].style.visibility = "visible";
+	window.addEventListener("keydown", (event) => {
+		if (event.keyCode == 32) {
+			if (gameStatus == 0) {
+				start();
+			}
+		}
+	})
 }
 
 let gameOver = () => {
+	document.getElementsByClassName("onboardMsg")[0].style.visibility = "visible";
 	gameStatus = -1;
 	window.removeEventListener("keydown",()=>{});
 	clearInterval(interval);
