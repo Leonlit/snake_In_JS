@@ -25,11 +25,20 @@ window.onload = () => {
 				start();
 				
 			}
+			
+			if (gameStatus == -1) {
+				reset();
+			}
 		}
-	})
+		if (gameStatus == 1) {
+			let direction = event.keyCode;
+			snake.changeDirection(direction);
+		}
+	});
 }
 
 let start = () => {
+	console.log(document.getElementsByClassName("onboardMsg")[1].style.visibility);
 	document.getElementsByClassName("onboardMsg")[1].style.visibility = "hidden";
 	gameStatus = 1;
 	
@@ -43,8 +52,7 @@ let start = () => {
 	snake.changeDirection(39);
 	
 	window.addEventListener("keydown", (event) => {
-		let direction = event.keyCode;
-		snake.changeDirection(direction);
+		
 	})
 }
 
@@ -72,7 +80,6 @@ let reset = () => {
 
 	seconds = 0;
 	score=0;
-	console.log("Game Over");
 	
 	scoreCont.innerHTML = 0;
 	timerCont.innerHTML = `0 : 0 : 0`;
@@ -80,27 +87,12 @@ let reset = () => {
 	console.log("resetted");
 	document.getElementsByClassName("onboardMsg")[0].style.visibility = "hidden";
 	document.getElementsByClassName("onboardMsg")[1].style.visibility = "visible";
-	window.addEventListener("keydown", (event) => {
-		if (event.keyCode == 32) {
-			if (gameStatus == 0) {
-				start();
-			}
-		}
-	})
 }
 
 let gameOver = () => {
 	document.getElementsByClassName("onboardMsg")[0].style.visibility = "visible";
 	gameStatus = -1;
-	window.removeEventListener("keydown",()=>{});
+	
 	clearInterval(interval);
 	clearInterval(timer);
-	
-	window.addEventListener("keydown", (event) => {
-		if (event.keyCode == 32) {
-			if (gameStatus == -1) {
-				reset();
-			}
-		}
-	})
 }
