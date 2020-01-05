@@ -13,13 +13,13 @@ canvas {
 }
 
 .gameWidget {
-	position:absolute;
+	position:fixed;
 	float:left;
 	font-size:30px;
 	font-weight:900;
-	margin-top:10%;
+	margin-top:150px;
 	font-family:Georgia;
-	margin-left:5%;
+	margin-left:100px;
 	text-align:center;
 }
 

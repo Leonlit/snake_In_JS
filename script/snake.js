@@ -1,5 +1,4 @@
 class Snake {
-	
 	constructor (newX, newY) {
 		this.x = newX;
 		this.y = newY;
@@ -14,9 +13,10 @@ class Snake {
 		ctx.fillStyle = "#FFFFFF";
 		ctx.fillRect(this.x, this.y, box, box);
 		
+		//color change from yellow to dark brown
 		ctx.fillStyle = "#f2f23f";
 		for (let i=0;i<this.tail.length;i++) {
-			ctx.fillStyle = `rgb(${255-(2*i)},${255-(10*i)},0)`;
+			ctx.fillStyle = `rgb(${255-(2*i)},${255-(5*i)},0)`;
 			ctx.fillRect(this.tail[i].x, this.tail[i].y, box, box);
 		}
 	}
@@ -31,17 +31,19 @@ class Snake {
 	
 	update () {
 		let result;
-		if (this.tail.find(i=>i.x===this.x && i.y ===this.y)) {
-			console.log(this.tail.indexOf(i=>i.x===this.x && i.y ===this.y));
+		
+		//snake eat itself
+		if (this.tail.find(i=>i.x==this.x && i.y ==this.y)) {
 			gameOver();
 		}
-		
+		//replace current box with next snake block
 		for (let i = 0;i < this.tail.length - 1;i++) {
 			this.tail[i] = this.tail[i+1];
 		}
-		
+		//if the size of the snake increase, put current location to it
+		//of if the size remain the same as previous, the newly created tail
+		//will surely have null for it's x and y so add the current location to them
 		this.tail[this.total - 1] = {x: this.x, y: this.y};
-		
 		this.x += this.xSpeed * box;
 		this.y += this.ySpeed * box;
 	}
@@ -72,9 +74,9 @@ class Snake {
 					this.ySpeed = 0;
 				}
 			break;
+			case 32: break;
 			default:
 				console.log("something went wrong !!!");
 		}
 	}
-	
 }

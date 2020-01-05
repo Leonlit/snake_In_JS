@@ -9,27 +9,35 @@ let snake, food, interval;
 let xv, yv;
 let score = 0, timer, seconds=0;
 let scoreCont, timerCont, gameStatus = 0;
+let gameLabel, startLabel;
 
-
-//game status is used to indicate the game status 1:game running, -1: game Over, 
-// 0:game not running
+//game status is used to indicate the game status 
+//	1:game running,
+//	-1: game Over, 
+//	0:game not running
 window.onload = () => {
-	border();
+	border();	//to draw the border for the canvas
 	
+	//timer and score elements selection
 	timerCont = document.getElementById("timer");
 	scoreCont = document.getElementById("scoreCount");
+	gameLabel = document.getElementsByClassName("onboardMsg")[0].style;
+	startLabel = document.getElementsByClassName("onboardMsg")[1].style;
 	
+	//adding event selection for the game
+	//only let user be able to change status if and only if they are in the
+	//correct gameStatus before changing to the next one
+	//
 	window.addEventListener("keydown", (event) => {
 		if (event.keyCode == 32) {
 			if (gameStatus == 0) {
 				start();
-				
 			}
-			
 			if (gameStatus == -1) {
 				reset();
 			}
 		}
+		
 		if (gameStatus == 1) {
 			let direction = event.keyCode;
 			snake.changeDirection(direction);
@@ -38,8 +46,7 @@ window.onload = () => {
 }
 
 let start = () => {
-	console.log(document.getElementsByClassName("onboardMsg")[1].style.visibility);
-	document.getElementsByClassName("onboardMsg")[1].style.visibility = "hidden";
+	startLabel.visibility = "hidden";
 	gameStatus = 1;
 	
 	food = new Food();
@@ -50,10 +57,7 @@ let start = () => {
 	timer = setInterval(timerCount,1000);
 	interval = setInterval(update,100);
 	snake.changeDirection(39);
-	
-	window.addEventListener("keydown", (event) => {
-		
-	})
+
 }
 
 let update = () => {
@@ -75,9 +79,7 @@ let update = () => {
 }
 
 let reset = () => {
-	
 	gameStatus = 0;
-
 	seconds = 0;
 	score=0;
 	
@@ -85,12 +87,12 @@ let reset = () => {
 	timerCont.innerHTML = `0 : 0 : 0`;
 	
 	console.log("resetted");
-	document.getElementsByClassName("onboardMsg")[0].style.visibility = "hidden";
-	document.getElementsByClassName("onboardMsg")[1].style.visibility = "visible";
+	gameLabel.visibility = "hidden";
+	startLabel.visibility = "visible";
 }
 
 let gameOver = () => {
-	document.getElementsByClassName("onboardMsg")[0].style.visibility = "visible";
+	gameLabel.visibility = "visible";
 	gameStatus = -1;
 	
 	clearInterval(interval);
