@@ -47,15 +47,20 @@ canvas {
 	left:50%;
 	top:50%;
 	border-radius:5px;
-	font-size:50px;
+	font-size:40px;
 	font-weight:900;
 	padding:3%;
 	color:white;
 	font-family:monospace;
-	visibility:;
 	text-align:center;
 }
 
 .alertMsg {
 	color:red;
+	font-size: 60px;
+}
+
+.alertMsg div {
+	color:white;
+	font-size: 30px;
 }

@@ -3,9 +3,8 @@
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 let box = 20;
-let rows = canvas.height / box;
-let columns = canvas.width / box;
-let snake, interval;
+let rows = canvas.height / box, columns = canvas.width / box;
+let snake, interval, direction;
 let xv, yv;
 let score = 0, timer, seconds=0;
 let scoreCont, timerCont, gameStatus = 0;
@@ -40,8 +39,7 @@ window.onload = () => {
 		}
 
 		if (gameStatus == 1) {
-			let direction = event.keyCode;
-			snake.changeDirection(direction);
+			direction = event.keyCode;
 		}
 	});
 }
@@ -65,6 +63,8 @@ let update = () => {
 	ctx.clearRect(0,0,canvas.width,canvas.height);
 	snake.update();
 
+
+	snake.changeDirection(direction);
 	border();
 	food.draw();
 	snake.draw();
