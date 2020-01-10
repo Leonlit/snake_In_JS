@@ -8,11 +8,11 @@ class Snake {
 		this.tail = [];
 		this.count = 1;
 	}
-	
+
 	draw () {
 		ctx.fillStyle = "#FFFFFF";
 		ctx.fillRect(this.x, this.y, box, box);
-		
+
 		//color change from yellow to dark brown
 		ctx.fillStyle = "#f2f23f";
 		for (let i=0;i<this.tail.length;i++) {
@@ -20,7 +20,7 @@ class Snake {
 			ctx.fillRect(this.tail[i].x, this.tail[i].y, box, box);
 		}
 	}
-	
+
 	eat (food) {
 		if (this.x === food.x*box && this.y === food.y*box) {
 			this.total++;
@@ -28,10 +28,10 @@ class Snake {
 		}
 		return false;
 	}
-	
+
 	update () {
 		let result;
-		
+
 		//snake eat itself
 		if (this.tail.find(i=>i.x==this.x && i.y ==this.y)) {
 			gameOver();
@@ -47,7 +47,7 @@ class Snake {
 		this.x += this.xSpeed * box;
 		this.y += this.ySpeed * box;
 	}
-	
+
 	changeDirection (direction) {
 		switch (direction) {
 			case 38:
