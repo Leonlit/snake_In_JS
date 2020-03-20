@@ -2,19 +2,21 @@
 
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
+
 let box = 20;
 let rows = canvas.height / box, columns = canvas.width / box;
-let snake, interval, direction;
-let xv, yv;
+let snake, interval, direction, xv, yv;
 let score = 0, timer, seconds=0;
 let scoreCont, timerCont, gameStatus = 0;
 let gameLabel, startLabel;
-let food = [];
+let food = [], maxFood = 5;
+let speed = 100;
 
 //game status is used to indicate the game status
 //	1:game running,
 //	-1: game Over,
 //	0:game not running
+
 window.onload = () => {
 	border();	//to draw the border for the canvas
 
@@ -37,7 +39,6 @@ window.onload = () => {
 				reset();
 			}
 		}
-
 		if (gameStatus == 1) {
 			direction = event.keyCode;
 		}
@@ -48,13 +49,15 @@ let start = () => {
 	startLabel.visibility = "hidden";
 	gameStatus = 1;
 
-	food = new Food();
+	for (let x = 0; x < maxFood;x++) {
+		food.push(new Food());
+		food[x].pickLocation();
+	}
 	snake = new Snake(box*5, box*5);
-
-	food.pickLocation();
+	
 
 	timer = setInterval(timerCount,1000);
-	interval = setInterval(update,100);
+	interval = setInterval(update,speed);
 	snake.changeDirection(39);
 
 }
@@ -62,18 +65,39 @@ let start = () => {
 let update = () => {
 	ctx.clearRect(0,0,canvas.width,canvas.height);
 	snake.update();
-
+	food.forEach((currFood, index)=>{
+		if (currFood.lifeSpan > 2) {
+			food.splice(index, 1);
+			food.push(new Food());
+			food[food.length - 1].pickLocation();
+		}
+	});
 
 	snake.changeDirection(direction);
 	border();
-	food.draw();
+
+	food.forEach((currFood) => {
+		currFood.draw();
+	});
 	snake.draw();
 
-	if (snake.eat(food)) {
-		food = new Food();
-		food.pickLocation();
-		scoreCont.innerHTML = ++score * 10;
-	}
+	food.forEach ((currFood, index)=> {
+		if (snake.eat(currFood)) {
+
+			score += currFood.score;
+			scoreCont.innerHTML = score;
+			speed += currFood.speedChange;
+
+			food.splice(index, 1);
+			food.forEach((currFood2)=>{
+				currFood2.lifeSpan++;
+			});
+			food.push(new Food());
+			food[food.length - 1].pickLocation();
+			clearInterval(interval);
+			interval = setInterval(update,speed);
+		}
+	});
 
 	if (snake.x >= canvas.width-box || snake.x <= 0 || snake.y >= canvas.height-box || snake.y <= 0 ) {
 		gameOver();
@@ -84,13 +108,13 @@ let reset = () => {
 	gameStatus = 0;
 	seconds = 0;
 	score=0;
-
+	food = [];
 	scoreCont.innerHTML = 0;
 	timerCont.innerHTML = `0 : 0 : 0`;
 
-	console.log("resetted");
 	gameLabel.visibility = "hidden";
 	startLabel.visibility = "visible";
+	speed = 100;
 }
 
 let gameOver = () => {

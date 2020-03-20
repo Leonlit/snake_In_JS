@@ -53,6 +53,7 @@ canvas {
 	color:white;
 	font-family:monospace;
 	text-align:center;
+	background-color:rgba(0,0,0, 0.5);
 }
 
 .alertMsg {
@@ -63,4 +64,11 @@ canvas {
 .alertMsg div {
 	color:white;
 	font-size: 30px;
+}
+
+@media screen and (max-width: 700px){
+	canvas {
+		height:300px;
+		width:300px;
+	}
 }

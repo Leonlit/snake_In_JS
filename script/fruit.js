@@ -1,10 +1,21 @@
+//Type of food,
 //normal food, poison, speed, slow,
-let foodColor = ["#4caf50","#f02222","#e6df1e","#166300"];
+let foodType = [
+	{color: "#4caf50", score: 10, speedChange: 0},
+	{color: "#f02222", score: -20, speedChange: 0},
+	{color: "#e6df1e", score: 5, speedChange: -10},
+	{color: "#166300", score: 5, speedChange: 10}
+];
+
 
 class Food {
 	constructor() {
 		this.x = 0, this.y = 0;
-		this.color = foodColor[Math.floor(Math.random()* foodColor.length)];
+		let obj = foodType[Math.floor(Math.random() * foodType.length)]
+		this.color = obj.color;
+		this.score = obj.score;
+		this.lifeSpan = 0;
+		this.speedChange = obj.speedChange;
 	}
 
 	pickLocation () {

@@ -35,17 +35,18 @@ class Snake {
 		//snake eat itself
 		if (this.tail.find(i=>i.x==this.x && i.y ==this.y)) {
 			gameOver();
+		}else {
+			//replace current box with next snake block
+			for (let i = 0;i < this.tail.length - 1;i++) {
+				this.tail[i] = this.tail[i+1];
+			}
+			//if the size of the snake increase, put current location to it
+			//of if the size remain the same as previous, the newly created tail
+			//will surely have null for it's x and y so add the current location to them
+			this.tail[this.total - 1] = {x: this.x, y: this.y};
+			this.x += this.xSpeed * box;
+			this.y += this.ySpeed * box;
 		}
-		//replace current box with next snake block
-		for (let i = 0;i < this.tail.length - 1;i++) {
-			this.tail[i] = this.tail[i+1];
-		}
-		//if the size of the snake increase, put current location to it
-		//of if the size remain the same as previous, the newly created tail
-		//will surely have null for it's x and y so add the current location to them
-		this.tail[this.total - 1] = {x: this.x, y: this.y};
-		this.x += this.xSpeed * box;
-		this.y += this.ySpeed * box;
 	}
 
 	changeDirection (direction) {
