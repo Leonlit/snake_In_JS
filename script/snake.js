@@ -21,6 +21,7 @@ class Snake {
 		}
 	}
 
+	//if the snake is on-top of a food return true
 	eat (food) {
 		if (this.x === food.x*box && this.y === food.y*box) {
 			this.total++;
@@ -32,7 +33,7 @@ class Snake {
 	update () {
 		let result;
 
-		//snake eat itself
+		//snake eat itself, as it's on-top of one of it's body part
 		if (this.tail.find(i=>i.x==this.x && i.y ==this.y)) {
 			gameOver();
 		}else {
@@ -75,9 +76,8 @@ class Snake {
 					this.ySpeed = 0;
 				}
 			break;
-			case 32: break;
-			default:
-				console.log("something went wrong !!!");
+			case 32: 
+			break;
 		}
 	}
 }

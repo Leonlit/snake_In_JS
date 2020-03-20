@@ -10,6 +10,12 @@ let foodType = [
 
 class Food {
 	constructor() {
+		
+		//x and y is the coordinate
+		//color is the color of the food
+		//score is the score obtained after consuming it
+		//lifeSpan is used to indicate the age of the food
+		//speedChange is used to change the speed of the snake
 		this.x = 0, this.y = 0;
 		let obj = foodType[Math.floor(Math.random() * foodType.length)]
 		this.color = obj.color;

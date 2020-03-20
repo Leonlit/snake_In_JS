@@ -49,13 +49,14 @@ let start = () => {
 	startLabel.visibility = "hidden";
 	gameStatus = 1;
 
+	//creating food following the maximum number of food
 	for (let x = 0; x < maxFood;x++) {
 		food.push(new Food());
 		food[x].pickLocation();
 	}
 	snake = new Snake(box*5, box*5);
 	
-
+	//game loop for the time Counter and the game timer
 	timer = setInterval(timerCount,1000);
 	interval = setInterval(update,speed);
 	snake.changeDirection(39);
@@ -65,6 +66,11 @@ let start = () => {
 let update = () => {
 	ctx.clearRect(0,0,canvas.width,canvas.height);
 	snake.update();
+	
+	//checking every element in the food array for food that has lifeSpan bigger than 2 (which is exactly 3)
+	//Delete those food and create new food's to replace them.
+	//this feature is added as maybe most of the food is colored in red (poison) which cause lose of points
+	//and user will not need to consume them for a new food to be spawn
 	food.forEach((currFood, index)=>{
 		if (currFood.lifeSpan > 2) {
 			food.splice(index, 1);
@@ -76,20 +82,27 @@ let update = () => {
 	snake.changeDirection(direction);
 	border();
 
+	//drawing the food's
 	food.forEach((currFood) => {
 		currFood.draw();
 	});
+
 	snake.draw();
 
+	//perform a check for all the element inside the food array 
+	//whether the snake head has collided with them
 	food.forEach ((currFood, index)=> {
 		if (snake.eat(currFood)) {
 
+			//update the score and the speed accordingly
 			score += currFood.score;
 			scoreCont.innerHTML = score;
 			speed += currFood.speedChange;
 
+			//delete the food and create a new food at the end of the array
 			food.splice(index, 1);
 			food.forEach((currFood2)=>{
+				//increase the other food's lifespan count 
 				currFood2.lifeSpan++;
 			});
 			food.push(new Food());
@@ -98,12 +111,14 @@ let update = () => {
 			interval = setInterval(update,speed);
 		}
 	});
-
+	
+	//adding colliding mechanism for the border with the snake, game over if true;
 	if (snake.x >= canvas.width-box || snake.x <= 0 || snake.y >= canvas.height-box || snake.y <= 0 ) {
 		gameOver();
 	}
 }
 
+//reset everthing 
 let reset = () => {
 	gameStatus = 0;
 	seconds = 0;
@@ -117,6 +132,7 @@ let reset = () => {
 	speed = 100;
 }
 
+//showing the game over menu while clearing the interval for the game loop
 let gameOver = () => {
 	gameLabel.visibility = "visible";
 	gameStatus = -1;

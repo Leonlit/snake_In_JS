@@ -1,3 +1,4 @@
+//need a counter for the timer
 let timerCount = () => {
 	seconds++;
 	let hour = Math.floor(seconds/(60*60));
@@ -6,6 +7,7 @@ let timerCount = () => {
 	timerCont.innerHTML = `${hour} : ${minute} : ${second}`;
 }
 
+//drawing the border out
 let border = () => {
 	ctx.fillStyle = "#A0522D";
 	for (let i=0;i<rows;i++) {
@@ -18,8 +20,4 @@ let border = () => {
 			}
 		}
 	}
-}
-
-let randomColor = () => {
-	return `rgb(${Math.floor(Math.random() * 255)+1},${Math.floor(Math.random() * 255)+1},${Math.floor(Math.random() * 255)+1})`;
 }
