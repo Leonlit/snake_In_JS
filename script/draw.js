@@ -31,18 +31,22 @@ window.onload = () => {
 	//correct gameStatus before changing to the next one
 	//
 	window.addEventListener("keydown", (event) => {
-		if (event.keyCode == 32) {
-			if (gameStatus == 0) {
-				start();
-			}
-			if (gameStatus == -1) {
-				reset();
-			}
-		}
-		if (gameStatus == 1) {
-			direction = event.keyCode;
-		}
+		keyCodeCheck(event.keyCode);
 	});
+}
+
+let keyCodeCheck = (keycode) => {
+	if (keycode == 32) {
+		if (gameStatus == 0) {
+			start();
+		}
+		if (gameStatus == -1) {
+			reset();
+		}
+	}
+	if (gameStatus == 1) {
+		direction = keycode;
+	}
 }
 
 let start = () => {
@@ -139,4 +143,24 @@ let gameOver = () => {
 
 	clearInterval(interval);
 	clearInterval(timer);
+}
+
+let changeDirection = (newDirection) => {
+	switch (newDirection) {
+		case 1:
+			direction = 37;
+			break;
+		case 2:
+			direction = 38;
+			break;
+		case 3:
+			direction = 39;
+			break;
+		case 4:
+			direction = 40;
+			break;
+		case 5:
+			keyCodeCheck(32);
+			break;
+	}
 }

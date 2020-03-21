@@ -52,6 +52,7 @@ class Snake {
 
 	changeDirection (direction) {
 		switch (direction) {
+			//up, down, left, right
 			case 38:
 				if (this.ySpeed != 1) {
 					this.xSpeed = 0;
