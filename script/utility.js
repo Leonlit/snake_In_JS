@@ -9,7 +9,7 @@ let timerCount = () => {
 
 //drawing the border out
 let border = () => {
-	ctx.fillStyle = "#A0522D";
+	ctx.fillStyle = "grey";
 	for (let i=0;i<rows;i++) {
 		if (i != 0 && i != rows-1) {
 			ctx.fillRect(0, i*box, box, box);

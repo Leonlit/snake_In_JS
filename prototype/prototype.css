@@ -1,0 +1,75 @@
+body {
+    background-color: black;
+    color:white;
+}
+
+#menu {
+    position:fixed;
+    transform:translate(-50%,-50%);
+    top:50%;
+    left:50%;
+    width:50%;
+    height:60%;
+    background-color: rgb(100,100,100);
+    padding:1%;
+    border-radius:10px;
+    border:5px solid white;
+
+}
+
+.menuTitle {
+    text-align: center;
+    margin:3%;
+    font-size:3em;
+    font-family: silkscreen;
+    font-weight: 900;
+    text-shadow: 0px 3px 3px black;
+}
+
+@font-face {
+    font-family:silkscreen;
+    src:url(slkscrb.ttf);
+}
+
+.smallWidgetSection {
+    position: absolute;
+    bottom:20px;
+    left:30px;
+}
+
+.smallWidget {
+    margin-top:20px;
+    cursor: pointer;
+    border-radius: 5px;
+    
+    transition:0.1s;
+}
+
+.smallWidget:hover {
+    box-shadow:0px 3px 5px black;
+}
+
+#audioContainer {
+    width:50px;
+    height:50px;
+    background: url("../sprite/audio_50px.png");  
+}
+
+#musicContainer {
+    width:50px;
+    height:50px;
+    background: url("../sprite/music_50px.png");  
+}
+
+.smallWidget div:hover {
+    animation:animate 0.5s steps(3) infinite;
+}
+
+@keyframes animate{
+    from {
+        background-position:0px;
+    }
+    to {
+        background-position: -150px;
+    }
+}

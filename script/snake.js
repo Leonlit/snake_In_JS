@@ -23,8 +23,13 @@ class Snake {
 
 	//if the snake is on-top of a food return true
 	eat (food) {
-		if (this.x === food.x*box && this.y === food.y*box) {
-			this.total++;
+		if (this.x === food.x*box && this.y === food.y*box) {	
+			if (food.score == -20 && this.tail.length > 1) {
+				this.total--;
+				this.tail.shift();
+			}else {
+				this.total++;
+			}
 			return true;
 		}
 		return false;

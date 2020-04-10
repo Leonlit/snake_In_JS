@@ -10,21 +10,28 @@
 		<link rel="stylesheet" href="css/index.css?"></link>
 	</head>
 	<body>
-		<div class="gameWidget">
-			<span class="timeTitle">Time : <span id="timer" class="">-- : -- : --</span></span>
-			<span class="scoreTitle">Score : <span id="scoreCount">0</span></span>
+		<div id="menu">
+			<div id="about"></div>
+			<div id="settings"></div>
+			<div id="contactMe"></div>
 		</div>
+		<div id="gamePlay">
+			<div class="gameWidget">
+				<span class="timeTitle">Time : <span id="timer" class="">-- : -- : --</span></span>
+				<span class="scoreTitle">Score : <span id="scoreCount">0</span></span>
+			</div>
 
-		<canvas id ="canvas" width="600" height="600"></canvas>
-		<div class="onboardMsg alertMsg" style="visibility:hidden;">Game Over <div>Press Spacebar To Restart</div></div>
-		<div class="onboardMsg">Press Spacebar To <br> Start</div>
-		<div class="controller">
-			<div class="arrowLeft" onclick="changeDirection(1)"></div>
-			<div class="arrowUp" onclick="changeDirection(2)"></div>
-			<div class="arrowDown"onclick="changeDirection(4)"></div>
-			<div class="arrowRight" onclick="changeDirection(3)"></div>
+			<canvas id ="canvas" width="600" height="600"></canvas>
+			<div class="onboardMsg alertMsg" style="visibility:hidden;">Game Over <div>Press Spacebar To Restart</div></div>
+			<div class="onboardMsg">Press Spacebar To <br> Start</div>
+			<div class="controller">
+				<div class="arrowLeft" onclick="changeDirection(1)"></div>
+				<div class="arrowUp" onclick="changeDirection(2)"></div>
+				<div class="arrowDown"onclick="changeDirection(4)"></div>
+				<div class="arrowRight" onclick="changeDirection(3)"></div>
+			</div>
+			<div class="roundSpace" onclick="changeDirection(5)"></div>
 		</div>
-		<div class="roundSpace" onclick="changeDirection(5)"></div>
 	</body>
 </html>
 
