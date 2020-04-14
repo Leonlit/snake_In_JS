@@ -1,5 +1,5 @@
 //need a counter for the timer
-let timerCount = () => {
+function timerCount () {
 	seconds++;
 	let hour = Math.floor(seconds/(60*60));
 	let minute = Math.floor(seconds/60);
@@ -8,7 +8,7 @@ let timerCount = () => {
 }
 
 //drawing the border out
-let border = () => {
+function border () {
 	ctx.fillStyle = "grey";
 	for (let i=0;i<rows;i++) {
 		if (i != 0 && i != rows-1) {

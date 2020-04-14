@@ -1,53 +1,60 @@
-"use strict"
+'use strict'
 
-let currentFrame = 4;
-let frameInterval;
-let targetElement;
-let animationStoped = false;
-let audioDisabled = false;
-let musicDisabled = false;
+let audioDisabled = false,
+    musicDisabled = false;
 
-const fps = 3;
+let menu = document.getElementById("mainMenu"),
+    settings = document.getElementById("settings"),
+    gamePlay = document.getElementById("gamePlay"),
+    aboutSection = document.getElementById("aboutSection"),
+    highScoreSection = document.getElementById("highScoreSection");
 
-let stopAnimation = () =>{
-    animationStoped = true;
-    currentFrame = 4;
-}
+//need implementation (not enough assets)
+let playAudio = () => {}
+let stopAudio = () => {}
+let playMusic = () => {}
+let stopMusic = () => {}
 
-/*
 
-let fpsInterval,
-    startedTimeStamp, 
-    currentTimeStamp, 
-    lastTimeStamp, 
-    elapsedTimeStamp;
-
-let startAnimation = (event) => {
-    animationStoped = false;
-    console.log(event.target.id);
-    if (!audioDisabled && !musicDisabled) {
-        targetElement = event.target.id;
-        fpsInterval = 1000 / fps;
-        lastTimeStamp = Date.now();
-        startedTimeStamp = lastTimeStamp;
-        frameInterval = animationInterval();
+function toggleAudio () {
+    audioDisabled = !audioDisabled;
+    if (audioDisabled) {
+        playAudio();
+    }else {
+        stopAudio();
     }
+    console.log(audioDisabled)
 }
 
-let animationInterval = () => {
-    currentTimeStamp = Date.now();
-    elapsedTimeStamp = currentTimeStamp - lastTimeStamp;
-    if (elapsedTimeStamp > fpsInterval) {
-        animateSprite();
-        lastTimeStamp = currentTimeStamp - (elapsedTimeStamp % fpsInterval);
+function toggleMusic () {
+    musicDisabled = !musicDisabled;
+    if (musicDisabled) {
+        playMusic();
+    }else {
+        stopMusic();
     }
-    if(!animationStoped) window.requestAnimationFrame(animationInterval);
+    console.log(musicDisabled)
 }
 
-let setAttributes = (element, attrs) => {
-    for (let key in attrs) {
-        element.setAttribute(key, attrs[key]);
-    }
+function showGameBoard () {    
+    gamePlay.style.display = "block";
+    menu.style.display = "none";
 }
 
-*/
+function hideGameBoard () {
+    gamePlay.style.display = "none";
+    menu.style.display = "block";
+}
+
+function showAboutSection () {
+    aboutSection.classList.remove("subMenu");
+    aboutSection.classList.add("menus");
+    menu.style.display = "none";
+}
+
+function hideAboutSection () {
+    aboutSection.classList.remove("menus");
+    aboutSection.classList.add("subMenu");
+    menu.style.display = "block";
+}
+

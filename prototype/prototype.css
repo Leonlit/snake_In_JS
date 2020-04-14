@@ -3,73 +3,299 @@ body {
     color:white;
 }
 
-#menu {
-    position:fixed;
+/*------------------------------*/
+/*         Menu Section         */
+/*------------------------------*/
+#mainMenu {
+    overflow:hidden;
+}
+
+.menus {
+    position:absolute;
+    display:block;
     transform:translate(-50%,-50%);
-    top:50%;
+    top:48%;
     left:50%;
-    width:50%;
-    height:60%;
+    width:60%;
+    height:70%;
     background-color: rgb(100,100,100);
     padding:1%;
     border-radius:10px;
     border:5px solid white;
+    overflow-y: scroll;
+}
 
+.subMenu {
+    display:none;
 }
 
 .menuTitle {
     text-align: center;
-    margin:3%;
+    margin:4%;
+    margin-left:15%;
+    margin-right:15%;
+    padding:2%;
     font-size:3em;
-    font-family: silkscreen;
+    font-family: silkscreen-bold;
     font-weight: 900;
     text-shadow: 0px 3px 3px black;
+    border:5px solid transparent;
+    border-radius:5px;
+    box-shadow:0px 3px 5px black;
+    transition:border 0.4s;
 }
 
-@font-face {
-    font-family:silkscreen;
-    src:url(slkscrb.ttf);
+.menuTitle:hover {
+    border:5px solid white;
 }
 
-.smallWidgetSection {
-    position: absolute;
-    bottom:20px;
-    left:30px;
+.sectionWrapper {
+    font-family:silkscreen-light;
+    margin:2%;
+    padding:2%;
 }
 
-.smallWidget {
-    margin-top:20px;
-    cursor: pointer;
-    border-radius: 5px;
-    
-    transition:0.1s;
+.sectionWrapper h2, .sectionWrapper h1 {
+    text-shadow: 0px 2px 5px black;
 }
 
-.smallWidget:hover {
+.sectionWrapper p{
+    text-indent:50px;
+    text-align: justify;
+    font-size:1.1em;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+.sectionWrapper a {
+    color:goldenrod;
+}
+
+.sectionWrapper a:hover {
+    color:yellow;
+}
+
+.sectionWrapper table {
+    margin:5%;
+    box-shadow: 0px 1px 5px black;
+}
+
+.sectionWrapper table, .sectionWrapper td, .sectionWrapper tr {
+    border-collapse: collapse;
+    border:3px solid white;
+    text-align: center;
+    padding:10px;
+}
+
+
+/*------------------------------*/
+/*      About page section      */
+/*------------------------------*/
+.sectionWrapper table tr td div {
+    width:40px;
+    height:40px;
+    box-shadow: 0px 1px 5px black;
+}
+
+#redBox {
+    background-color: #f02222;
+}
+
+#greenBox {
+    background-color: #4caf50;
+}
+
+#yellowBox {
+    background-color: #e6df1e;
+}
+
+#darkGreenBox {
+    background-color: #166300;
+}
+
+#socialMedias {
+    margin-top:5%;
+}
+
+#socialMedias div {
+    width:80px;
+    height:80px;
+    display: inline-block;
+    margin-left:5%;
+    background-color: #8d8d8d;
+    box-shadow:0px 3px 3px black;
+    border:5px solid transparent;
+    border-radius:5px;
+    transition:0.3s;
+}
+
+#socialMedias div:hover {
+    border:5px solid white;
     box-shadow:0px 3px 5px black;
 }
 
-#audioContainer {
-    width:50px;
-    height:50px;
-    background: url("../sprite/audio_50px.png");  
+
+/*------------------------------*/
+/*     small Widget section     */
+/*------------------------------*/
+.smallWidgetSection {
+    transform:translate(-50%,-50%);
+    margin-left:50%;
+    width:200px;
 }
 
-#musicContainer {
+.smallBtn {
+    margin-left:20px;
+    margin-right:20px;
+    cursor: pointer;
+    border-radius: 5px; 
+    transition:0.3s;
+    border:2px solid transparent;
+    box-shadow:0px 3px 5px black;
+    display: inline-block;
+}
+
+.smallBtn:hover {
+    box-shadow:0px 3px 10px white;
+}
+
+
+.smallBtn div:hover {
+    animation:animate50px 0.5s steps(3) infinite;
+}
+
+#audioSprite {
+    width:50px;
+    height:50px;
+    background: url("../sprite/audio_50px.png") -100px 0px ;  
+}
+
+#musicSprite {
     width:50px;
     height:50px;
     background: url("../sprite/music_50px.png");  
 }
 
-.smallWidget div:hover {
-    animation:animate 0.5s steps(3) infinite;
+/*------------------------------*/
+/*      big Widget section      */
+/*------------------------------*/
+.bigWidgetSection {
+    margin-left:50%;
+    margin-top:20%;
+    transform:translate(-50%,-50%);
+    width:540px;
+    height:140px;
 }
 
-@keyframes animate{
+.bigBtn {
+    display: inline-block;
+    width:100px;
+    height:100px;
+    margin:10px;
+    text-align: center;
+    cursor:pointer;
+    padding:5px;
+    border-radius: 5px; 
+    transition:0.3s;
+    box-shadow:0px 3px 5px black;
+}
+
+.menuBtn:hover {
+    box-shadow:0px 5px 15px white;
+}
+
+.bigBtn div:hover {
+    animation:animate100px 1s steps(5) infinite; 
+}
+
+#gameStartSprite {
+    width:100px;
+    height:100px;
+    background: url("../sprite/playBtn_100px.png") 0px 0px ;
+}
+
+#highScoreSprite {
+    width:100px;
+    height:100px;
+    background: url("../sprite/highScore_100px.png") 0px 0px ;   
+}
+
+#aboutSprite {
+    width:100px;
+    height:100px;
+    background: url("../sprite/about_100px.png") 0px 0px ; 
+}
+
+#settings {
+    width:100px;
+    height:100px;
+    background: url("../sprite/settings_100px.png");  
+}
+
+
+
+/*------------------------------*/
+/*      custom font family      */
+/*------------------------------*/
+@font-face {
+    font-family:silkscreen-Bold;
+    src:url(slkscrb.ttf);
+}
+
+@font-face {
+    font-family: silkscreen-light;
+    src:url(slkscre.ttf);
+}
+
+
+/*------------------------------*/
+/*      animation section       */
+/*------------------------------*/
+@keyframes animate50px{
     from {
         background-position:0px;
     }
     to {
         background-position: -150px;
     }
+}
+
+@keyframes animate100px{
+    from {
+        background-position:0px;
+    }
+    to {
+        background-position: -500px;
+    }
+}
+
+@keyframes fadeOut {
+    from { 
+        opacity:1.0
+    }
+
+    to {
+        opacity: 0.0;
+        display:none;
+    }
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+::-webkit-scrollbar-track {
+    background:transparent;
+}
+   
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
 }

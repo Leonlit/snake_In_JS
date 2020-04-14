@@ -35,7 +35,7 @@ window.onload = () => {
 	});
 }
 
-let keyCodeCheck = (keycode) => {
+function keyCodeCheck (keycode) {
 	if (keycode == 32) {
 		if (gameStatus == 0) {
 			start();
@@ -49,7 +49,7 @@ let keyCodeCheck = (keycode) => {
 	}
 }
 
-let start = () => {
+function start () {
 	startLabel.visibility = "hidden";
 	gameStatus = 1;
 
@@ -67,7 +67,7 @@ let start = () => {
 
 }
 
-let update = () => {
+function update () {
 	ctx.clearRect(0,0,canvas.width,canvas.height);
 	snake.update();
 	
@@ -123,7 +123,7 @@ let update = () => {
 }
 
 //reset everthing 
-let reset = () => {
+function reset () {
 	gameStatus = 0;
 	seconds = 0;
 	score=0;
@@ -137,7 +137,7 @@ let reset = () => {
 }
 
 //showing the game over menu while clearing the interval for the game loop
-let gameOver = () => {
+function gameOver () {
 	gameLabel.visibility = "visible";
 	gameStatus = -1;
 
@@ -145,7 +145,7 @@ let gameOver = () => {
 	clearInterval(timer);
 }
 
-let changeDirection = (newDirection) => {
+function changeDirection (newDirection) {
 	switch (newDirection) {
 		case 1:
 			direction = 37;
