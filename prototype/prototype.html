@@ -3,6 +3,7 @@
     <head>
         <title>Experiment place for the game</title>
         <link rel="stylesheet" href="prototype.css"/>
+        <link rel="stylesheet" href="css/index.css">
 
         <meta charset="UTF-8">
 		<meta name="author" content="leonlit">
@@ -40,13 +41,30 @@
             </div>
         </div>
         
-        <div id="gamePlay" class="subMenu">
-            let's say that the game is showed now, lol
-        </div>
+        <div id="gamePlay">
+			<div class="gameWidget">
+				<span class="timeTitle">Time : <span id="timer" class="">-- : -- : --</span></span>
+				<span class="scoreTitle">Score : <span id="scoreCount">0</span></span>
+			</div>
+
+			<canvas id ="canvas" width="600" height="600"></canvas>
+			<div class="onboardMsg alertMsg" style="visibility:hidden;">Game Over <div>Press Spacebar To Restart</div></div>
+			<div class="onboardMsg">Press Spacebar To <br> Start</div>
+			<div class="controller">
+				<div class="arrowLeft" onclick="changeDirection(1)"></div>
+				<div class="arrowUp" onclick="changeDirection(2)"></div>
+				<div class="arrowDown"onclick="changeDirection(4)"></div>
+				<div class="arrowRight" onclick="changeDirection(3)"></div>
+			</div>
+			<div class="roundSpace" onclick="changeDirection(5)"></div>
+		</div>
 
         <div id="aboutSection" class="subMenu">
             <div class="sectionWrapper">
-                <h1>About the game</h1>
+                <div class="backToHome" onclick="goBackToMenu()">
+                    <img src="../sprite/home_100px.png"/>
+                </div>
+                <h1>About the game</h1><br>
                 <hr/><br>
                 <h2>Intro</h2>
                 <p>
@@ -118,21 +136,41 @@
                 </p>
                 <br><hr><br>
                 <h2>Contact Me</h2>
+                <p>
+                    in case you have any questions, suggestions or any bugs report, you could contact me using the following:
+                </p>
                 <div id="socialMedias">
-                    <div><a href="https://github.com/Leonlit" target="_blank"><img src="../sprite/githuh_80px.png"/></a></div>
-                    <div><a href="https://github.com/Leonlit" target="_blank"><img src="../sprite/twitter_80px.png"/></a></div>
-                    <div><a href="https://github.com/Leonlit" target="_blank"><img src="../sprite/githuh_80px.png"/></a></div>
-                    <div><a href="https://github.com/Leonlit" target="_blank"><img src="../sprite/githuh_80px.png"/></a></div>
+                    <div><a href="https://github.com/Leonlit/snake_In_JS" target="_blank"><img src="../sprite/github_80px.png"/></a></div>
+                    <div><a href="https://twitter.com/leonlit" target="_blank"><img src="../sprite/twitter_80px.png"/></a></div>
                 </div>
             </div>
         </div>
-        <div id="settings" class="subMenu menus">
+        <div id="settings" class="subMenu">
             let's say that this is the settings page, lol
         </div>
-        <div id="highScoreSection" class="subMenu menus">
-            let's say that this is highscore panel, lol
+        <div id="highScoreSection" class="subMenu">
+            <div class="sectionWrapper">
+                <div class="backToHome" onclick="goBackToMenu()">
+                    <img src="../sprite/home_100px.png"/>
+                </div>
+                <h1>LeaderBoard</h1><br><br><hr><br><br>
+                <table id="highScoreBoard">
+                    <tr>
+                        <td>No.</td>
+                        <td>Name</td>
+                        <td>Score</td>
+                        <td>date, time</td>
+                    </tr>
+                </table>
+            </div>
         </div>
-    </body>
+        <footer>Developed with love by <a href="https://github.com/Leonlit" target="_blank">Leonlit</a></footer>
+    </body> 
 </html>
+
+<script src="script/utility.js"></script>
+<script src="script/snake.js"></script>
+<script src="script/draw.js"></script>
+<script src="script/fruit.js"></script>
 
 <script src="prototype.js"></script>

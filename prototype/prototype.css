@@ -3,6 +3,14 @@ body {
     color:white;
 }
 
+#gamePlay {
+    display: none;
+}
+
+a {
+    text-decoration:none;
+}
+
 /*------------------------------*/
 /*         Menu Section         */
 /*------------------------------*/
@@ -52,7 +60,7 @@ body {
 .sectionWrapper {
     font-family:silkscreen-light;
     margin:2%;
-    padding:2%;
+    padding:5%;
 }
 
 .sectionWrapper h2, .sectionWrapper h1 {
@@ -76,8 +84,9 @@ body {
 }
 
 .sectionWrapper table {
-    margin:5%;
     box-shadow: 0px 1px 5px black;
+    margin-left:4%;
+    width:92%;
 }
 
 .sectionWrapper table, .sectionWrapper td, .sectionWrapper tr {
@@ -85,6 +94,7 @@ body {
     border:3px solid white;
     text-align: center;
     padding:10px;
+    word-wrap: break-word;
 }
 
 
@@ -132,6 +142,34 @@ body {
 #socialMedias div:hover {
     border:5px solid white;
     box-shadow:0px 3px 5px black;
+}
+
+.backToHome{
+    float:right;
+    background-color: #8d8d8d;
+    box-shadow:0px 3px 3px black;
+    border:5px solid transparent;
+    border-radius:5px;
+    transition:0.3s;
+    cursor: pointer;
+}
+
+.backToHome img {
+    width:60px;
+    height:60px;
+}
+
+.backToHome:hover {
+    border:5px solid white;
+    box-shadow:0px 3px 5px black;
+}
+
+
+/*------------------------------*/
+/*      High-Score section      */
+/*------------------------------*/
+#highScoreSection table td:nth-child(2) {
+    max-width:200px;
 }
 
 
@@ -232,6 +270,23 @@ body {
     background: url("../sprite/settings_100px.png");  
 }
 
+
+/*------------------------------*/
+/*        footer section        */
+/*------------------------------*/
+footer{
+    position: fixed;
+    bottom: 10px;
+    left:20px;
+}
+
+footer a {
+    color:goldenrod;
+}
+
+footer a:hover {
+    color:yellow;
+}
 
 
 /*------------------------------*/
