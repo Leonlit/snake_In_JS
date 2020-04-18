@@ -3,19 +3,32 @@
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 
-let box = 20;
-let rows = canvas.height / box, columns = canvas.width / box;
-let snake, interval, direction, xv, yv;
-let score = 0, timer, seconds=0;
-let scoreCont, timerCont, gameStatus = 0;
-let gameLabel, startLabel;
-let food = [], maxFood = 5;
-let speed = 100;
+let box = 20,
+	rows = canvas.height / box,
+	columns = canvas.width / box,
+	snake, 
+	interval, 
+	direction, 
+	xv, 
+	yv,
+	score = 0, 
+	timer, 
+	seconds=0,
+	scoreCont, 
+	timerCont, 
+	gameStatus = 0,
+	gameLabel, 
+	startLabel,
+	food = [], 
+	maxFood = 5,
+	speed = 100,
+	gameBoardShown = false;
 
 //game status is used to indicate the game status
 //	1:game running,
 //	-1: game Over,
 //	0:game not running
+//	game board means the canvas for the game
 
 window.onload = () => {
 	border();	//to draw the border for the canvas
@@ -26,25 +39,36 @@ window.onload = () => {
 	gameLabel = document.getElementsByClassName("onboardMsg")[0].style;
 	startLabel = document.getElementsByClassName("onboardMsg")[1].style;
 
+	//for feeding data onto the leaderboard table
+	constructTableData();
+
 	//adding event selection for the game
 	//only let user be able to change status if and only if they are in the
 	//correct gameStatus before changing to the next one
-	//
 	window.addEventListener("keydown", (event) => {
 		keyCodeCheck(event.keyCode);
 	});
 }
 
+//check the keyCode
+//check if player pressed space (key code : 32) while the stats of the game is not paused and that the main menu is not shown
+//if yes then check for the in-game status, if its 0 means a new game is really to be played, if its -1 means that the player is at the
+//game over menu
+
+//next is check if 'p' is pressed (80) and if the game board is shown
+
+//next statement is to accept direction for the snake when the game stats is paused and the game is ongoing
 function keyCodeCheck (keycode) {
-	if (keycode == 32) {
+	if (keycode == 32 && gameBoardShown && !paused) {
 		if (gameStatus == 0) {
 			start();
 		}
 		if (gameStatus == -1) {
 			reset();
 		}
-	}
-	if (gameStatus == 1) {
+	}else if (keycode == 80 && gameBoardShown) {
+		pauseGame();
+	}else if (gameStatus == 1 && !paused) {
 		direction = keycode;
 	}
 }
@@ -64,7 +88,6 @@ function start () {
 	timer = setInterval(timerCount,1000);
 	interval = setInterval(update,speed);
 	snake.changeDirection(39);
-
 }
 
 function update () {
@@ -130,6 +153,8 @@ function reset () {
 	food = [];
 	scoreCont.innerHTML = 0;
 	timerCont.innerHTML = `0 : 0 : 0`;
+	ctx.clearRect(0,0,canvas.width,canvas.height);
+	border();
 
 	gameLabel.visibility = "hidden";
 	startLabel.visibility = "visible";
@@ -140,27 +165,32 @@ function reset () {
 function gameOver () {
 	gameLabel.visibility = "visible";
 	gameStatus = -1;
+	direction = null;
+	stopGameLoop();
+}
 
+//stopping the game loop, ussed when the game pause, returning to main menu, and restart the game
+function stopGameLoop () {
 	clearInterval(interval);
 	clearInterval(timer);
 }
 
-function changeDirection (newDirection) {
-	switch (newDirection) {
+function changeDirection (place) {
+	switch (place) {
 		case 1:
-			direction = 37;
+			direction = directionKey[0];
 			break;
 		case 2:
-			direction = 38;
+			direction = directionKey[1];
 			break;
 		case 3:
-			direction = 39;
+			direction = directionKey[2];
 			break;
 		case 4:
-			direction = 40;
+			direction = directionKey[3];
 			break;
 		case 5:
 			keyCodeCheck(32);
-			break;
+		break;
 	}
 }

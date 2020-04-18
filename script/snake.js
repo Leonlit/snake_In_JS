@@ -1,3 +1,7 @@
+//left, up, right, down
+let defaultDirectionKey = [37, 38, 39, 40],
+	directionKey = defaultDirectionKey.slice();
+
 class Snake {
 	constructor (newX, newY) {
 		this.x = newX;
@@ -24,7 +28,7 @@ class Snake {
 	//if the snake is on-top of a food return true
 	eat (food) {
 		if (this.x === food.x*box && this.y === food.y*box) {	
-			if (food.score == -20 && this.tail.length > 1) {
+			if (food.score == -20 && this.tail.length > 0) {
 				this.total--;
 				this.tail.shift();
 			}else {
@@ -42,7 +46,8 @@ class Snake {
 		if (this.tail.find(i=>i.x==this.x && i.y ==this.y)) {
 			gameOver();
 		}else {
-			//replace current box with next snake block
+			//replace current box with next snake block, applicable to tail only, head is ignored as 
+			//its coordinate is controlled by this.x and this.y.
 			for (let i = 0;i < this.tail.length - 1;i++) {
 				this.tail[i] = this.tail[i+1];
 			}
@@ -58,25 +63,25 @@ class Snake {
 	changeDirection (direction) {
 		switch (direction) {
 			//up, down, left, right
-			case 38:
+			case directionKey[1]:
 				if (this.ySpeed != 1) {
 					this.xSpeed = 0;
 					this.ySpeed = -1;
 				}
 			break;
-			case 40:
+			case directionKey[3]:
 				if (this.ySpeed != -1) {
 					this.xSpeed = 0;
 					this.ySpeed = 1;
 				}
 			break;
-			case 37:
+			case directionKey[0]:
 				if (this.xSpeed != 1) {
 					this.xSpeed = -1;
 					this.ySpeed = 0;
 				}
 			break;
-			case 39:
+			case directionKey[2]:
 				if (this.xSpeed != -1) {
 					this.xSpeed = 1;
 					this.ySpeed = 0;

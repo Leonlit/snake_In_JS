@@ -1,24 +1,235 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title>snake game - by leonlit</title>
-		<meta charset="UTF-8">
+<html>
+    <head>
+        <title>Snake game - by Leonlit</title>
+        <link rel="stylesheet" href="style/menu.css"/>
+        <link rel="stylesheet" href="style/index.css">
+
+        <meta charset="UTF-8">
 		<meta name="author" content="leonlit">
 		<meta name="description" content="A simple snake game using pure CSS, HTML and Javascript">
 		<meta name="keywords" content="HTML, CSS, JS, Snake Game, Leonlit, Side Project, Hobby project">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="css/index.css?"></link>
-	</head>
-	<body>
-		<div id="menu">
-			<div id="about"></div>
-			<div id="settings"></div>
-			<div id="contactMe"></div>
+    </head>
+    <body>
+        <!--Main menu section-->
+        <div id="mainMenu" class="menus">
+            <h1 class="menuTitle menuBtn">Snake Game</h1>
+            
+            <div class="bigWidgetSection centerContainer">
+                <div class="bigBtn menuBtn" onclick="showAboutSection()">
+                    <div id="aboutSprite"></div>
+                </div>
+                <div class="bigBtn menuBtn" onclick="showGameBoard()">
+                    <div id="gameStartSprite"></div>
+                    
+                </div>
+                <div class="bigBtn menuBtn" onclick="showHighscore()">
+                    <div id="highScoreSprite"></div>
+                </div>
+                <div class="bigBtn menuBtn" onclick="showSettings()"> 
+                    <div id="settings"></div>
+                </div>
+            </div>
+            
+            <div class="smallWidgetSection centerContainer">
+                <div class="smallBtn"> 
+                    <div id="audioSprite" onclick="toggleAudio()"></div>
+                </div>
+                <div class="smallBtn">
+                    <div id="musicSprite" onclick="toggleMusic()"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!--Pause menu for the game-->
+        <div id="shader"></div>
+        <div id="pauseMenu">
+            <h2>Game Paused</h2>
+            <div class="center centerContainer">
+                <div onclick="restartGame()" class="menuBtn">
+                    <img src="asset/sprite/restart_80px.png"/>
+                </div>
+                <div onclick="goBack()" class="menuBtn">
+                    <img src="asset/sprite/home_80px.png"/>
+                </div>
+                <div onclick="showSettingFromPause()" class="menuBtn">
+                    <img src="asset/sprite/settings_80px.png"/>
+                </div>
+            </div>
+        </div>
+
+        <!--The game board section-->
+        <div id="gamePlay">
+			<div class="gameWidget">
+				<span class="timeTitle">Time : <span id="timer" class="">-- : -- : --</span></span>
+				<span class="scoreTitle">Score : <span id="scoreCount">0</span></span>
+			</div>
+
+			<canvas id ="canvas" width="600" height="600"></canvas>
+			<div class="onboardMsg alertMsg" style="visibility:hidden;">Game Over <div>Press Spacebar To Restart</div></div>
+			<div class="onboardMsg">Press Spacebar To <br> Start</div>
+			<div class="controller">
+				<div class="arrowLeft" onclick="changeDirection(1)"></div>
+				<div class="arrowUp" onclick="changeDirection(2)"></div>
+				<div class="arrowDown"onclick="changeDirection(4)"></div>
+				<div class="arrowRight" onclick="changeDirection(3)"></div>
+			</div>
+			<div class="roundSpace" onclick="changeDirection(5)"></div>
 		</div>
-		
-	</body>
+        
+        <!--About the game section-->
+        <div id="aboutSection" class="subMenu">
+            <div class="sectionWrapper">
+                <div class="backToHome menuBtn" onclick="goBack()">
+                    <img src="asset/sprite/goBack_80px.png"/>
+                </div>
+                <h1>About the game</h1><br>
+                <hr/><br>
+                <h2>Intro</h2>
+                <p>
+                    Welcome to the game. It's just a simple snake game created by using HTML, CSS and Javascript.
+                </p>
+                <p>
+                    The game started as a very basic snake game, but as I started to add some sprite, menus, in-game features, audio and music, the
+                    game started to feel much more like a game. All the sprite are created by myself, not to mention it was my first time drawing pixel 
+                    sprites. I used <a href="https://www.piskelapp.com/">Piskelapp</a> for creating the sprites, it provide basic functionality for creating 
+                    simple and complex pixel art. Whie the old-styled font is taken from <a href="https://www.dafont.com/silkscreen.font">Dafont</a> by 
+                    <a href="https://www.dafont.com/jason-aleksandr-kottke.d349">Jason Aleksandr Kottke</a>
+                </p>
+                <br>
+                <h2>How-to-play</h2>
+                <p>
+                    If you're on a desktop/laptop then the default contorls are using the arrow key. The snake will change its direction based on the key that you pressed.
+                    Next, if you're on a smartphone/tablet, you can use the controller that will be shown when you press start. The controls could be changed in the settings 
+                    section (desktop/laptop user only). The goal of this game is to get as many score as you can while avoiding the snake from ramming into a wall or eating itself.
+                </p>
+                <p>
+                    In case you want to pause the game, you can do it by pressing the p button.
+                </p>
+                
+                <br>
+                <h2>Game features</h2>
+                <p>
+                    
+                    There's a high-score system for the game so you can always compare your score with your previous record or with other peoples.
+                    There's' 4 kinds of food that the snake can eat:
+                    <div class="scrollable">
+                        <table>
+                            <tr>
+                                <td>Color image</td>
+                                <td>Color</td>
+                                <td>Score</td>
+                                <td>Side Effect</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id="redBox"></div>
+                                </td>
+                                <td>Red</td>
+                                <td>-20</td>
+                                <td>Reduce score and snake length</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id="greenBox"></div>
+                                </td>
+                                <td>Green</td>
+                                <td>+10</td>
+                                <td>Increase score and snake length</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id="yellowBox"></div>
+                                </td>
+                                <td>yellow</td>
+                                <td>+5</td>
+                                <td>Increases score,snake moving speed and length</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id="darkGreenBox"></div>
+                                </td>
+                                <td>Dark green</td>
+                                <td>+5</td>
+                                <td>Increases score, reduce snake speed and increase its length</td>
+                            </tr>
+                        </table>
+                    </div>
+                </p>
+                <p>
+                    note that some new feature will be added in future update :D
+                </p>
+                <br><hr><br>
+                <h2>Contact Me</h2>
+                <p>
+                    in case you have any questions, suggestions or any bugs report, you could contact me using the following:
+                </p>
+                <div id="socialMedias" class="centerContainer">
+                    <div class="menuBtn"><a href="https://github.com/Leonlit/snake_In_JS" target="_blank"><img src="asset/sprite/github_80px.png"/></a></div>
+                    <div class="menuBtn"><a href="https://twitter.com/leonlit" target="_blank"><img src="asset/sprite/twitter_80px.png"/></a></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="settingsSection" class="subMenu">
+            <div class="sectionWrapper">
+                <div class="backToHome menuBtn" onclick="goBack()">
+                    <img src="asset/sprite/goBack_80px.png"/>
+                </div>
+                <h1>Settings</h1><br>
+                <hr/><br>
+                <h2>Controller (direction)</h2>
+                <div class="scrollable">
+                    <div class="controls centerContainer" onkeyup="changeDirectionKey(event)">
+                        <div>
+                            <div class="arrowLeft"></div>
+                            <input id="keyForLeft" placeholder="ArrowLeft"/>
+                        </div>
+                        <div>
+                            <div class="arrowUp"></div>
+                            <input id="keyForUp" placeholder="ArrowUp"/>
+                        </div>
+                        <div>
+                            <div class="arrowRight"></div>
+                            <input id="keyForRight" placeholder="arrowRight"/>
+                        </div>
+                        <div>
+                            <div class="arrowDown"></div>
+                            <input id="keyForDown" placeholder="arrowDown"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!--HighScoreSection-->
+        <div id="highScoreSection" class="subMenu">
+            <div class="sectionWrapper">
+                <div class="backToHome menuBtn" onclick="goBack()">
+                    <img src="asset/sprite/goBack_80px.png"/>
+                </div>
+                <h1>LeaderBoard</h1><br><br><hr><br><br>
+                <div class="scrollable">
+                    <table id="highScoreBoard">
+                        <tr>
+                            <td>No.</td>
+                            <td>Name</td>
+                            <td>Score</td>
+                            <td>date, time</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!--simple copyright-->
+        <footer>Developed with love by <a href="https://github.com/Leonlit" target="_blank">Leonlit</a></footer>
+    </body> 
 </html>
 
+<script src="script/menu.js"></script>
 <script src="script/utility.js"></script>
 <script src="script/snake.js"></script>
 <script src="script/draw.js"></script>

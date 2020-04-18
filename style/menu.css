@@ -5,19 +5,34 @@ body {
 
 #gamePlay {
     display: none;
+    z-index: 3;
 }
 
 a {
     text-decoration:none;
 }
 
+.centerContainer {
+    margin-left:auto;
+    margin-right:auto;
+}
+
+input {
+    border:2px solid transparent;
+    transition: 0.3s;
+    box-shadow: 0px 3px 5px black;
+    margin-bottom:10px;
+} 
+
+input:focus {
+    outline:none;
+    box-shadow:0px 3px 10px black;
+}
+
+
 /*------------------------------*/
 /*         Menu Section         */
 /*------------------------------*/
-#mainMenu {
-    overflow:hidden;
-}
-
 .menus {
     position:absolute;
     display:block;
@@ -51,6 +66,20 @@ a {
     border-radius:5px;
     box-shadow:0px 3px 5px black;
     transition:border 0.4s;
+}
+
+.menuBtn {
+    background-color: #8d8d8d;
+    box-shadow:0px 3px 3px black;
+    border:5px solid transparent;
+    border-radius:5px;
+    transition:0.3s;
+    cursor: pointer;
+}
+
+.menuBtn:hover {
+    border:5px solid white;
+    box-shadow:0px 3px 10px black;
 }
 
 .menuTitle:hover {
@@ -97,6 +126,15 @@ a {
     word-wrap: break-word;
 }
 
+.backToHome{
+    float:right;
+}
+
+.backToHome img {
+    width:60px;
+    height:60px;
+}
+
 
 /*------------------------------*/
 /*      About page section      */
@@ -125,44 +163,16 @@ a {
 
 #socialMedias {
     margin-top:5%;
+    width:230px;
 }
 
 #socialMedias div {
     width:80px;
     height:80px;
     display: inline-block;
-    margin-left:5%;
-    background-color: #8d8d8d;
-    box-shadow:0px 3px 3px black;
-    border:5px solid transparent;
-    border-radius:5px;
-    transition:0.3s;
+    margin-left:20px;
 }
 
-#socialMedias div:hover {
-    border:5px solid white;
-    box-shadow:0px 3px 5px black;
-}
-
-.backToHome{
-    float:right;
-    background-color: #8d8d8d;
-    box-shadow:0px 3px 3px black;
-    border:5px solid transparent;
-    border-radius:5px;
-    transition:0.3s;
-    cursor: pointer;
-}
-
-.backToHome img {
-    width:60px;
-    height:60px;
-}
-
-.backToHome:hover {
-    border:5px solid white;
-    box-shadow:0px 3px 5px black;
-}
 
 
 /*------------------------------*/
@@ -174,17 +184,126 @@ a {
 
 
 /*------------------------------*/
+/*      Pause Menu section      */
+/*------------------------------*/
+#pauseMenu {
+    z-index: 5;
+    position:absolute;
+    display: none;
+    transform:translate(-50%,-50%);
+    top:48%;
+    left:50%;
+    width:500px;
+    height:200px;
+    background-color: rgb(100,100,100);
+    padding:1%;
+    border-radius:10px;
+    border:5px solid white;
+    text-align: center;
+}
+
+#pauseMenu h2{
+    text-align:center;
+    font-family: silkscreen-bold;
+    font-size:2em;
+}
+
+#pauseMenu .center div{
+    display:inline-block;
+    padding:10px;
+    margin-left:3%;
+}
+
+#pauseMenu div img {
+    width:60px;
+    height:60px;
+}
+
+#pauseMenu div {
+    margin-top:10px;
+}
+
+#shader {
+    display:none;
+    position: absolute;
+    top:0;
+    left:0;
+    background-color: black;
+    opacity:0.7;
+    z-index: 4;
+    width:100vw;
+    height:100vh;
+}
+
+
+/*------------------------------*/
+/*       Settings Section       */
+/*------------------------------*/
+#settingsSection {
+    transform:translate(-50%,-50%);
+    top:50%;
+    left:50%;
+    z-index:5;
+}
+
+#settingsSection .controls div {
+    display:inline-block;
+    width:150px;
+    margin-left:5px;
+    text-align: center;
+}
+
+#settingsSection .controls div div{
+    width:80px;
+    height:80px;
+}
+
+.arrowLeft{
+    background:url("../asset/sprite/arrows_80px.png") 0px ;
+}
+
+.arrowUp{
+    background:url("../asset/sprite/arrows_80px.png") -80px ;
+}
+
+.arrowRight{
+    background:url("../asset/sprite/arrows_80px.png") -160px ;
+}
+
+.arrowDown{
+    background:url("../asset/sprite/arrows_80px.png") -240px ;
+}
+
+.controls {
+    width:660px;
+    margin-top:5%;
+}
+
+.scrollable {
+    overflow-x:auto;
+    overflow-y:auto;
+}
+
+.controls div input {
+    width:100px;
+    height:20px;
+    padding:1%;
+    background-color:rgb(78, 78, 78);
+    border:none;
+    color:white;
+    text-align:center;
+}
+
+
+/*------------------------------*/
 /*     small Widget section     */
 /*------------------------------*/
 .smallWidgetSection {
-    transform:translate(-50%,-50%);
-    margin-left:50%;
-    width:200px;
+    width:170px;
 }
 
 .smallBtn {
     margin-left:20px;
-    margin-right:20px;
     cursor: pointer;
     border-radius: 5px; 
     transition:0.3s;
@@ -197,77 +316,62 @@ a {
     box-shadow:0px 3px 10px white;
 }
 
+.smallBtn div {
+    width:50px;
+    height:50px;
+}
 
 .smallBtn div:hover {
     animation:animate50px 0.5s steps(3) infinite;
 }
 
 #audioSprite {
-    width:50px;
-    height:50px;
-    background: url("../sprite/audio_50px.png") -100px 0px ;  
+    background: url("../asset/sprite/audio_50px.png") -100px 0px ;  
 }
 
 #musicSprite {
-    width:50px;
-    height:50px;
-    background: url("../sprite/music_50px.png");  
+    background: url("../asset/sprite/music_50px.png");  
 }
 
 /*------------------------------*/
 /*      big Widget section      */
 /*------------------------------*/
 .bigWidgetSection {
-    margin-left:50%;
-    margin-top:20%;
-    transform:translate(-50%,-50%);
-    width:540px;
+    margin-top:10%;
+    margin-bottom:4%;
+    width:575px;
     height:140px;
 }
 
 .bigBtn {
     display: inline-block;
-    width:100px;
-    height:100px;
     margin:10px;
-    text-align: center;
-    cursor:pointer;
     padding:5px;
-    border-radius: 5px; 
-    transition:0.3s;
-    box-shadow:0px 3px 5px black;
-}
-
-.menuBtn:hover {
-    box-shadow:0px 5px 15px white;
 }
 
 .bigBtn div:hover {
     animation:animate100px 1s steps(5) infinite; 
 }
 
-#gameStartSprite {
+.bigBtn div{
     width:100px;
     height:100px;
-    background: url("../sprite/playBtn_100px.png") 0px 0px ;
+}
+
+#gameStartSprite {
+    background: url("../asset/sprite/playBtn_100px.png") 0px 0px ;
 }
 
 #highScoreSprite {
-    width:100px;
-    height:100px;
-    background: url("../sprite/highScore_100px.png") 0px 0px ;   
+    background: url("../asset/sprite/highScore_100px.png") 0px 0px ;   
 }
 
 #aboutSprite {
-    width:100px;
-    height:100px;
-    background: url("../sprite/about_100px.png") 0px 0px ; 
+    background: url("../asset/sprite/about_100px.png") 0px 0px ; 
 }
 
 #settings {
-    width:100px;
-    height:100px;
-    background: url("../sprite/settings_100px.png");  
+    background: url("../asset/sprite/settings_100px.png");  
 }
 
 
@@ -294,12 +398,12 @@ footer a:hover {
 /*------------------------------*/
 @font-face {
     font-family:silkscreen-Bold;
-    src:url(slkscrb.ttf);
+    src:url(../asset/font/slkscrb.ttf);
 }
 
 @font-face {
     font-family: silkscreen-light;
-    src:url(slkscre.ttf);
+    src:url(../asset/font/slkscre.ttf);
 }
 
 
@@ -328,7 +432,6 @@ footer a:hover {
     from { 
         opacity:1.0
     }
-
     to {
         opacity: 0.0;
         display:none;
@@ -338,18 +441,14 @@ footer a:hover {
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
-  }
-  
-  /* Track */
-::-webkit-scrollbar-track {
-    background:transparent;
+    height:10px;
 }
-   
-  /* Handle */
+
+/* Handle */
 ::-webkit-scrollbar-thumb {
     background: #888; 
 }
-  
+
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #555; 
