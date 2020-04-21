@@ -12,6 +12,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        <audio autoplay id="music">
+           <!--<source src="asset/music/test.mp3" type="audio/mp3">-->
+        </audio>
         <!--Main menu section-->
         <div id="mainMenu" class="menus">
             <h1 class="menuTitle menuBtn">Snake Game</h1>
@@ -45,7 +48,7 @@
         <!--Pause menu for the game-->
         <div id="shader"></div>
         <div id="pauseMenu">
-            <h2>Game Paused</h2>
+            <h2 class="subTitle">Game Paused</h2>
             <div class="center centerContainer">
                 <div onclick="restartGame()" class="menuBtn">
                     <img src="asset/sprite/restart_80px.png"/>
@@ -67,7 +70,6 @@
 			</div>
 
 			<canvas id ="canvas" width="600" height="600"></canvas>
-			<div class="onboardMsg alertMsg" style="visibility:hidden;">Game Over <div>Press Spacebar To Restart</div></div>
 			<div class="onboardMsg">Press Spacebar To <br> Start</div>
 			<div class="controller">
 				<div class="arrowLeft" onclick="changeDirection(1)"></div>
@@ -76,7 +78,37 @@
 				<div class="arrowRight" onclick="changeDirection(3)"></div>
 			</div>
 			<div class="roundSpace" onclick="changeDirection(5)"></div>
-		</div>
+        </div>
+        
+        <div id="gameOverMenu" class="subMenu">
+            <div class="sectionWrapper">
+                <h1 id="gameOverTitle">Game Over</h1>
+                <h2 class="subTitle" id="newHighText">New HighScore</h2>
+                <div id="performance" class="centerContainer">
+                    <div id="newPlayerScore">Score: 1232321321</div>
+                    <div id="position">position : 1</div><br>
+                </div><br>
+                <div id="playerNameCont">
+                    <input id="getPlayerName" placeholder="Your name"/>
+                </div>
+                
+                <div class="scrollable">
+                    <h1>LeaderBoard</h1><br><hr><br><br>
+                    <table id="gameOverScoreTable">
+                        <tr>
+                            <td>No.</td>
+                            <td>Name</td>
+                            <td>Score</td>
+                            <td>date, time</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <button class="gameOverBtn menuBtn" id="gameOverSubmit" onclick="getPlayerName()">Submit</button>
+                <button class="gameOverBtn menuBtn" id="gameOverHome" onclick="goBack()">Home</button>
+                <button class="gameOverBtn menuBtn" id="gameOverRestart" onclick="startGameAgain()">restart</button>
+            </div>
+        </div>    
         
         <!--About the game section-->
         <div id="aboutSection" class="subMenu">
@@ -199,7 +231,12 @@
                             <input id="keyForDown" placeholder="arrowDown"/>
                         </div>
                     </div>
-                </div>
+                </div><br><br>
+                <h2>Change music volume</h2>
+                <input type="range" id="musicVolumeChanger" max="1" min="0" step="0.01"  value="0.4" oninput="changeMusicVolume(this.value)"/>
+                <h2>Change audio volume</h2>
+                <input type="range" id="audioVolumeChanger" max="1" min="0" step="0.01"  value="0.4" oninput="changeAudioVolume(this.value)"/>
+                
             </div>
 
         </div>
@@ -225,11 +262,15 @@
         </div>
 
         <!--simple copyright-->
-        <footer>Developed with love by <a href="https://github.com/Leonlit" target="_blank">Leonlit</a></footer>
+        <footer>Developed by <a href="https://github.com/Leonlit" target="_blank">Leonlit</a></footer>
     </body> 
 </html>
 
 <script src="script/menu.js"></script>
+<script src="script/audio.js"></script>
+<script src="script/highscoreSystem.js"></script>
+<script src="script/pauseGame.js"></script>
+<script src="script/settings.js"></script>
 <script src="script/utility.js"></script>
 <script src="script/snake.js"></script>
 <script src="script/draw.js"></script>

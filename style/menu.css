@@ -137,6 +137,81 @@ input:focus {
 
 
 /*------------------------------*/
+/*        Game Over Menu        */
+/*------------------------------*/
+#gameOverMenu {
+    height:80vh;
+    z-index: 5;
+}
+
+#gameOverTitle {
+    text-align:center;
+    font-family: silkscreen-bold;
+    font-size:3em;
+    color:red;
+    margin-top:0;
+}
+
+#newHighText {
+    display:none;
+}
+
+#gameOverScoreTable {
+    margin-bottom:50px;
+}
+
+#performance div {
+    font-size:1.5em;
+    margin-left:50px;
+    margin-top:20px;
+}
+
+#position {
+    display:none;
+}
+
+#playerNameCont {
+    margin-top:30px;
+}
+
+#getPlayerName {
+    display:none;
+    padding:5px;
+    background-color:rgb(85, 85, 85);
+    font-family: silkscreen-light;
+    font-size:1.5em;
+    box-shadow: none;
+    border-radius:5px;
+    color:white;
+    width:100%;
+}
+
+#getPlayerName::placeholder {
+    color:rgb(190, 190, 190);
+}
+
+#getPlayerName:focus{
+    border:2px solid white;
+    box-shadow: 0px 0px 5px black;
+}
+
+.gameOverBtn {
+    background-color:green;
+    font-family:silkscreen-bold;
+    color:white;
+    font-size:1.3em;
+    float:right;
+    margin-left:30px;
+    padding:5px;
+    border-radius:5px;
+}
+
+.gameOverBtn:focus {
+    outline:none;
+}
+
+
+/*------------------------------*/
 /*      About page section      */
 /*------------------------------*/
 .sectionWrapper table tr td div {
@@ -202,7 +277,7 @@ input:focus {
     text-align: center;
 }
 
-#pauseMenu h2{
+.subTitle{
     text-align:center;
     font-family: silkscreen-bold;
     font-size:2em;
@@ -248,7 +323,7 @@ input:focus {
 
 #settingsSection .controls div {
     display:inline-block;
-    width:150px;
+    width:100px;
     margin-left:5px;
     text-align: center;
 }
@@ -275,7 +350,7 @@ input:focus {
 }
 
 .controls {
-    width:660px;
+    width:450px;
     margin-top:5%;
 }
 
@@ -294,6 +369,14 @@ input:focus {
     text-align:center;
 }
 
+#settingsSection input[type="range"] {
+    width:100%;
+    height:20px;
+    padding:1%;
+    margin-top:20px;
+    box-shadow:none;
+    cursor:pointer;
+}
 
 /*------------------------------*/
 /*     small Widget section     */
@@ -326,11 +409,13 @@ input:focus {
 }
 
 #audioSprite {
-    background: url("../asset/sprite/audio_50px.png") -100px 0px ;  
+    background-image: url("../asset/sprite/audio_50px.png");
+    background-position:  -100px 0px ;
 }
 
 #musicSprite {
-    background: url("../asset/sprite/music_50px.png");  
+    background-image: url("../asset/sprite/music_50px.png"); 
+    background-position: 0px 0px ; 
 }
 
 /*------------------------------*/

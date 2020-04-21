@@ -16,8 +16,7 @@ let box = 20,
 	seconds=0,
 	scoreCont, 
 	timerCont, 
-	gameStatus = 0,
-	gameLabel, 
+	gameStatus = 0, 
 	startLabel,
 	food = [], 
 	maxFood = 5,
@@ -36,11 +35,7 @@ window.onload = () => {
 	//timer and score elements selection
 	timerCont = document.getElementById("timer");
 	scoreCont = document.getElementById("scoreCount");
-	gameLabel = document.getElementsByClassName("onboardMsg")[0].style;
-	startLabel = document.getElementsByClassName("onboardMsg")[1].style;
-
-	//for feeding data onto the leaderboard table
-	constructTableData();
+	startLabel = document.getElementsByClassName("onboardMsg")[0].style;
 
 	//adding event selection for the game
 	//only let user be able to change status if and only if they are in the
@@ -155,17 +150,16 @@ function reset () {
 	timerCont.innerHTML = `0 : 0 : 0`;
 	ctx.clearRect(0,0,canvas.width,canvas.height);
 	border();
-
-	gameLabel.visibility = "hidden";
 	startLabel.visibility = "visible";
 	speed = 100;
 }
 
 //showing the game over menu while clearing the interval for the game loop
 function gameOver () {
-	gameLabel.visibility = "visible";
 	gameStatus = -1;
 	direction = null;
+	let score = Number(scoreCont.innerHTML);
+	checkIfHighScore(score);
 	stopGameLoop();
 }
 
@@ -175,6 +169,7 @@ function stopGameLoop () {
 	clearInterval(timer);
 }
 
+//controrls for mobile user
 function changeDirection (place) {
 	switch (place) {
 		case 1:

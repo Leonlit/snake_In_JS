@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #test {
+                background-image: url("asset/sprite/audio_50px.png");
+                background-position:  -100px 0px ;
+                width:50px;
+                height:50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="test" onclick="change()"></div>
+    </body>
+</html>
+
+<script>
+    function change () {
+        let ele = document.getElementById("test");
+        //ele.style.backgroundImage = "url('asset/sprite/audio_50px.png')"
+        ele.style.backgroundPosition = " 0px 0px";
+    }
+</script>
