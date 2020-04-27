@@ -37,6 +37,17 @@ window.onload = () => {
 	scoreCont = document.getElementById("scoreCount");
 	startLabel = document.getElementsByClassName("onboardMsg")[0].style;
 
+	//comstruct the leaderboard on document load
+	constructTableData();
+
+	//add the sound effect to all menu btn
+	let x = document.querySelectorAll(".menuBtn");
+    for (let i = 0; i < x.length; i++) {
+        x[i].addEventListener("click", ()=> {
+            playAudio(0);
+        });
+    }
+
 	//adding event selection for the game
 	//only let user be able to change status if and only if they are in the
 	//correct gameStatus before changing to the next one
@@ -56,6 +67,7 @@ window.onload = () => {
 function keyCodeCheck (keycode) {
 	if (keycode == 32 && gameBoardShown && !paused) {
 		if (gameStatus == 0) {
+			playAudio(7)
 			start();
 		}
 		if (gameStatus == -1) {
@@ -137,11 +149,13 @@ function update () {
 	//adding colliding mechanism for the border with the snake, game over if true;
 	if (snake.x >= canvas.width-box || snake.x <= 0 || snake.y >= canvas.height-box || snake.y <= 0 ) {
 		gameOver();
+		playAudio(6);
 	}
 }
 
 //reset everthing 
 function reset () {
+	paused = false;
 	gameStatus = 0;
 	seconds = 0;
 	score=0;
@@ -161,6 +175,7 @@ function gameOver () {
 	let score = Number(scoreCont.innerHTML);
 	checkIfHighScore(score);
 	stopGameLoop();
+	paused = true;
 }
 
 //stopping the game loop, ussed when the game pause, returning to main menu, and restart the game
@@ -169,7 +184,7 @@ function stopGameLoop () {
 	clearInterval(timer);
 }
 
-//controrls for mobile user
+//controlers for mobile user
 function changeDirection (place) {
 	switch (place) {
 		case 1:

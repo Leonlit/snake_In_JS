@@ -9,7 +9,8 @@
 		<meta name="author" content="leonlit">
 		<meta name="description" content="A simple snake game using pure CSS, HTML and Javascript">
 		<meta name="keywords" content="HTML, CSS, JS, Snake Game, Leonlit, Side Project, Hobby project">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="asset/sprite/logo.ico" type="image/x-icon">
     </head>
     <body>
         <audio autoplay id="music">
@@ -213,7 +214,7 @@
                 <hr/><br>
                 <h2>Controller (direction)</h2>
                 <div class="scrollable">
-                    <div class="controls centerContainer" onkeyup="changeDirectionKey(event)">
+                    <div class="controls centerContainer" onkeyup="changeDirectionKey(event)" oninput="checkForBlank(event)">
                         <div>
                             <div class="arrowLeft"></div>
                             <input id="keyForLeft" placeholder="ArrowLeft"/>

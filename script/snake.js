@@ -4,13 +4,17 @@ let defaultDirectionKey = [37, 38, 39, 40],
 
 class Snake {
 	constructor (newX, newY) {
+		//x and y - coordination of the snake head
+		//xSpeed and ySpeed - the direction the new block will be drawed
+		//total - the length of the snake
+		//tail - the position of its tail, the last element will be the one after the snake head.
+		//Since the snake head has it's own coordination, the tail coordination will follow on the heads coord
 		this.x = newX;
 		this.y = newY;
 		this.xSpeed = 1;
 		this.ySpeed = 0;
 		this.total = 0;
 		this.tail = [];
-		this.count = 1;
 	}
 
 	draw () {
@@ -27,11 +31,14 @@ class Snake {
 
 	//if the snake is on-top of a food return true
 	eat (food) {
-		if (this.x === food.x*box && this.y === food.y*box) {	
+		if (this.x === food.x*box && this.y === food.y*box) {
+			//play food sound effect
+			playAudio(food["audio"]);
+			//if the food is "poison", decrease the length of snake by taking out the first element (end of snake tail)
 			if (food.score == -20 && this.tail.length > 0) {
 				this.total--;
 				this.tail.shift();
-			}else {
+			}else if (food.score != -20) {
 				this.total++;
 			}
 			return true;
@@ -40,8 +47,6 @@ class Snake {
 	}
 
 	update () {
-		let result;
-
 		//snake eat itself, as it's on-top of one of it's body part
 		if (this.tail.find(i=>i.x==this.x && i.y ==this.y)) {
 			gameOver();
@@ -63,6 +68,13 @@ class Snake {
 	changeDirection (direction) {
 		switch (direction) {
 			//up, down, left, right
+			//think of an 2D array
+			// -----------------------
+			// |   	  y-- ^			 | 
+			// | 		  |----> x++ |
+			// | x-- <----|			 |
+			// |		  v y++		 |
+			// -----------------------
 			case directionKey[1]:
 				if (this.ySpeed != 1) {
 					this.xSpeed = 0;

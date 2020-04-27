@@ -49,6 +49,7 @@ function toggleMusic () {
     console.log(musicDisabled)
 }
 
+
 function startMusicHower () {
     musicBtn.style.animation = "animate50px 0.5s steps(3) infinite";
 }
@@ -64,4 +65,14 @@ function changeMusicVolume(amount) {
 
 function changeAudioVolume (amount) {
     audioVolume = amount;
+}
+
+//Sound effect for the whole game in an array
+function playAudio (index) {
+    let effects = ["btnClick", "score", "poison", "slow", "speed", "pause", "wallhit", "start"];
+    if (!audioDisabled) {
+        let winSound = new Audio(`asset/audio/${effects[index]}.mp3`);
+        winSound.volume = audioVolume;
+        winSound.play();
+    }
 }
