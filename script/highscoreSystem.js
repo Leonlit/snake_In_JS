@@ -13,16 +13,11 @@ let scorePlace = document.getElementById("position"),
     newScoreCont = document.getElementById("newPlayerScore"),
     playerNameCont = document.getElementById("playerNameCont"),
     playerNameInput = document.getElementById("getPlayerName"),
-    gameOverLeaderboard = document.getElementById("gameOverScoreTable");
+    highScoreBoardBody = highScoreBoard.getElementsByTagName("tbody")[0];
+    gameOverLeaderboard = document.getElementById("gameOverScoreTable").getElementsByTagName("tbody")[0];
 
 //since I'll be rewriting the innerHTML of the table that means every data previously filled the table, will be 
 //replaced, therefore we need to include them every time we rewrite the table.
-let defaultTable = `<tr>
-                        <td>No.</td>
-                        <td>Name</td>
-                        <td>Score</td>
-                        <td>date, time</td>
-                    </tr>`
 
 /* 
     Demo of the JSON structure of the localStorage is:
@@ -38,8 +33,8 @@ function constructTableData (newHighPos) {
     //incase there's no early data for the leaderboard
     if (JSONData != null) {
         scores = [];
-        gameOverLeaderboard.innerHTML = defaultTable;
-        highScoreBoard.innerHTML = defaultTable;
+        highScoreBoardBody.innerHTML = "";
+        gameOverLeaderboard.innerHTML = "";
         parsedJSON = JSON.parse(JSONData);
         highScores = parsedJSON["highScores"];
         for (let i = 0; i< highScores.length;i++) {
@@ -60,7 +55,7 @@ function constructTableData (newHighPos) {
                                 <td>${formatCurrentTime(currentRecord["date"])}</td>
                            </tr>`;
 
-            if (gameStatus != -1) highScoreBoard.innerHTML += (tr + element);
+            if (gameStatus != -1) highScoreBoardBody.innerHTML += (tr + element);
             else gameOverLeaderboard.innerHTML += (tr + element);
         }
     }
@@ -71,10 +66,10 @@ function formatCurrentTime (date) {
     let dateObj = new Date(date),
         year = dateObj.getFullYear(),
         month = dateObj.getMonth() + 1,
-        day = dateObj.getDay(),
+        currDate = dateObj.getDate(),
         hour = dateObj.getHours(),
         minute = dateObj.getMinutes();
-    return `${day}/${month}/${year} , ${hour}:${minute}`;
+    return `${currDate}/${month}/${year} , ${hour}:${minute}`;
 }
 
 let newScore, scoreIndex;
