@@ -118,12 +118,16 @@ input:focus {
     width:92%;
 }
 
-.sectionWrapper table, .sectionWrapper td, .sectionWrapper tr {
+.sectionWrapper table, .sectionWrapper td, .sectionWrapper tr, .sectionWrapper th {
     border-collapse: collapse;
     border:3px solid white;
     text-align: center;
     padding:10px;
     word-wrap: break-word;
+}
+
+.sectionWrapper th {
+    background-color: rgb(50, 50, 50);
 }
 
 .backToHome{

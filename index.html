@@ -3,7 +3,8 @@
     <head>
         <title>Snake game - by Leonlit</title>
         <link rel="stylesheet" href="style/menu.css"/>
-        <link rel="stylesheet" href="style/index.css">
+        <link rel="stylesheet" href="style/index.css"/>
+        <link rel="stylesheet" href="style/mobileMenu.css"/>
 
         <meta charset="UTF-8">
 		<meta name="author" content="leonlit">
@@ -58,7 +59,7 @@
                     <img src="asset/sprite/home_80px.png"/>
                 </div>
                 <div onclick="showSettingFromPause()" class="menuBtn">
-                    <img src="asset/sprite/settings_80px.png"/>
+                    <img src="asset/sprite/settings_static.png"/>
                 </div>
             </div>
         </div>
@@ -73,12 +74,18 @@
 			<canvas id ="canvas" width="600" height="600"></canvas>
 			<div class="onboardMsg">Press Spacebar To <br> Start</div>
 			<div class="controller">
-				<div class="arrowLeft" onclick="changeDirection(1)"></div>
-				<div class="arrowUp" onclick="changeDirection(2)"></div>
-				<div class="arrowDown"onclick="changeDirection(4)"></div>
-				<div class="arrowRight" onclick="changeDirection(3)"></div>
+                <div class="controllerSpace"></div>
+                <img class="controlUp" onclick="changeDirection(2)" src="asset/sprite/arrow_up.png"/>
+                <div class="controllerSpace"></div><br>
+                <img class="controlLeft" onclick="changeDirection(1)" src="asset/sprite/arrow_left.png"/>
+                <div class="controllerSpace"></div>
+                <img class="controlDown"onclick="changeDirection(3)" src="asset/sprite/arrow_right.png"/><br>
+                <div class="controllerSpace"></div>
+                <img class="controlRight" onclick="changeDirection(4)" src="asset/sprite/arrow_down.png"/>
+                <div class="controllerSpace"></div><br>
 			</div>
-			<div class="roundSpace" onclick="changeDirection(5)"></div>
+            <img class="roundSpace" onclick="changeDirection(5)" src="asset/sprite/spaceBtn_100px.png"/>
+            <img class="pauseBtnImg" onclick="pauseGame()" src="asset/sprite/pauseBtn_80px.png"/>
         </div>
         
         <div id="gameOverMenu" class="subMenu">
@@ -104,12 +111,9 @@
                                 <th>date, time</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            
-                        </tbody>
+                        <tbody></tbody>
                     </table>
                 </div>
-                
                 <button class="gameOverBtn menuBtn" id="gameOverSubmit" onclick="getPlayerName()">Submit</button>
                 <button class="gameOverBtn menuBtn" id="gameOverHome" onclick="goBack()">Home</button>
                 <button class="gameOverBtn menuBtn" id="gameOverRestart" onclick="startGameAgain()">restart</button>
@@ -146,11 +150,9 @@
                 <p>
                     In case you want to pause the game, you can do it by pressing the p button.
                 </p>
-                
                 <br>
                 <h2>Game features</h2>
                 <p>
-                    
                     There's a high-score system for the game so you can always compare your score with your previous record or with other peoples.
                     There's' 4 kinds of food that the snake can eat:
                     <div class="scrollable">
@@ -216,10 +218,10 @@
                 <div class="backToHome menuBtn" onclick="goBack()">
                     <img src="asset/sprite/goBack_80px.png"/>
                 </div>
-                <h1>Settings</h1><br>
+                <h1> Settings</h1><br>
                 <hr/><br>
-                <h2>Controller (direction)</h2>
-                <div class="scrollable">
+                <h2 id="controllerTitle">Controller (direction)</h2>
+                <div class="scrollable" >
                     <div class="controls centerContainer" onkeyup="changeDirectionKey(event)" oninput="checkForBlank(event)">
                         <div>
                             <div class="arrowLeft"></div>
@@ -245,7 +247,6 @@
                 <input type="range" id="audioVolumeChanger" max="1" min="0" step="0.01"  value="0.4" oninput="changeAudioVolume(this.value)"/>
                 
             </div>
-
         </div>
 
         <!--HighScoreSection-->
@@ -272,7 +273,6 @@
                 </div>
             </div>
         </div>
-
         <!--simple copyright-->
         <footer>Developed by <a href="https://github.com/Leonlit" target="_blank">Leonlit</a></footer>
     </body> 

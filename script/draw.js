@@ -186,6 +186,7 @@ function stopGameLoop () {
 
 //controlers for mobile user
 function changeDirection (place) {
+	console.log(place);
 	switch (place) {
 		case 1:
 			direction = directionKey[0];

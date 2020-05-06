@@ -1,0 +1,70 @@
+@media screen and (max-width: 1024px) {
+    .menus {
+        width:85%;
+        height:50%;
+        padding:2%;
+        top:50%;
+    }
+
+    .bigWidgetSection {
+        margin-top:10%;
+        margin-bottom:5%;
+        width:500px;
+        height:110px;
+    }
+
+    #gameStartSprite {
+        background: url("../asset/sprite/playBtn_80px.png") 0px 0px ;
+    }
+    
+    #highScoreSprite {
+        background: url("../asset/sprite/highScore_80px.png") 0px 0px ;   
+    }
+    
+    #aboutSprite {
+        background: url("../asset/sprite/about_80px.png") 0px 0px; 
+    }
+    
+    #settings {
+        background: url("../asset/sprite/settings_80px.png");  
+    }
+
+    .bigBtn div:hover {
+        animation:animate80px 1s steps(5) infinite; 
+    }
+    
+    .bigBtn div{
+        width:80px;
+        height:80px;
+    }
+
+    #pauseMenu {
+        width:400px;
+        height:200px;
+    }
+
+    #pauseMenu .center div{
+        margin-left:5px;
+    }
+
+    #settingsSection .scrollable {
+        display:none;
+    }
+
+    #controllerTitle {
+        display:none;
+    }
+}
+
+@keyframes animate80px{
+    from {
+        background-position:0px;
+    }
+    to {
+        background-position: -400px;
+    }
+}
+
+@media screen and (max-width: 600px){
+
+}
