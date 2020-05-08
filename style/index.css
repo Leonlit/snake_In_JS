@@ -10,6 +10,8 @@ canvas {
 	transform:translate(-50%,-50%);
 	background-color:#3e3e3e;
 	border-radius:5px;
+	width:600px;
+	height:600px;
 }
 
 .controller {
@@ -90,9 +92,9 @@ canvas {
 
 @media screen and (max-width: 1024px) {
 	canvas {
-		height:400px;
-		width:400px;
-		top:35%;
+		height:600px;
+		width:600px;
+		top:37%;
 	}
 
 	.gameWidget {
@@ -105,8 +107,7 @@ canvas {
 	}
 
 	.onboardMsg {
-		top:35%;
-		font-size:40px;
+		top:375px;
 	}
 
 	.gameWidget #scoreCount{
@@ -118,8 +119,8 @@ canvas {
 	}
 
 	.controllerSpace {
-		width:80px;
-		height:80px;
+		width:100px;
+		height:100px;
 		display: inline-block;
 	}
 
@@ -140,29 +141,29 @@ canvas {
 	}
 
 	.controller img {
-		width:80px;
-		height:80px;
+		width:100px;
+		height:100px;
 	}
 
 	.controller {
 		position: fixed;
-		top:65%;
+		bottom:10%;
 		right:10%;
 		display: inline-block;
 	}
 
 	.roundSpace {
-		width:150px;
-		height:150px;
-		bottom:10%;
+		width:200px;
+		height:200px;
+		bottom:14%;
 		left:15%;
 	}
 
 	.pauseBtnImg {
-		width:100px;
-		height:100px;
-		bottom:25%;
-		left:25%;
+		width:150px;
+		height:150px;
+		bottom:27%;
+		left:30%;
 	}
 
 	.alertMsg div {
@@ -170,24 +171,48 @@ canvas {
 	}
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 800px) {
 	canvas {
-		height:300px;
-		width:300px;
-		top:40%;
+		height:600px;
+		width:600px;
+		top:370px;
+	}
+
+	.controller {
+		bottom:2%;
+		right:10%;
+	}
+	
+	.roundSpace {
+		width:200px;
+		height:200px;
+		bottom:5%;
+		left:15%;
+	}
+
+	.pauseBtnImg {
+		width:150px;
+		height:150px;
+		bottom:20%;
+		left:25%;
+	}
+	
+}
+
+@media screen and (max-width: 650px){
+	canvas {
+		height:40vh;
+		width:80vw;
+		top:280px;
 	}
 
 	.gameWidget {
-		transform:translate(0, 0);
-		top:0px;
-		left:0px;
-		width:100%;
-		height:50px;
-		font-size:22px;
+		height:40px;
+		font-size:18px;
 	}
 
 	.onboardMsg {
-		top:40%;
+		top:250px;
 		font-size:25px;
 	}
 
@@ -207,5 +232,134 @@ canvas {
 	.scoreTitle {
 		padding-top:2%;
 		right:1%;
+	}
+
+	.controller {
+		right:6%;
+		bottom:5%;
+	}
+
+	.roundSpace {
+		width:100px;
+		height:100px;
+		bottom:150px;
+		left:11%;
+	}
+
+	.pauseBtnImg {
+		width:80px;
+		height:80px;
+		bottom:50px;
+		left:12%;
+	}
+
+	.controllerSpace {
+		width:70px;
+		height:70px;
+	}
+
+	.controller img {
+		width:70px;
+		height:70px;
+	}
+
+	footer {
+		font-size: 12px;	
+	}
+}
+
+@media screen and (max-width: 400px) {
+	canvas {
+		width:250px;
+		height:250px;
+		top:175px;
+	}
+
+	.gameWidget {
+		height:30px;
+		font-size:18px;
+	}
+
+	.onboardMsg {
+		top:185px;
+	}
+
+	.alertMsg div {
+		font-size: 28px;
+	}
+
+	.gameWidget #scoreCount {
+		font-size: 24px;
+	}
+
+	.timeTitle {
+		left:1%;
+		padding-top:2%;
+	}
+
+	.scoreTitle {
+		padding-top:2%;
+		right:1%;
+	}
+
+	.controller {
+		position: fixed;
+		right:10%;
+		bottom:5%;
+		display: inline-block;
+	}
+
+	.roundSpace {
+		width:80px;
+		height:80px;
+		bottom:150px;
+		left:11%;
+	}
+
+	.pauseBtnImg {
+		width:60px;
+		height:60px;
+		bottom:50px;
+		left:12%;
+	}
+
+	.controllerSpace {
+		width:60px;
+		height:60px;
+	}
+
+	.controller img {
+		width:60px;
+		height:60px;
+	}
+
+	.scoreTitle {
+		top:-5px;
+	}
+
+	@media (max-height: 510px) {
+		.controllerSpace {
+			width:50px;
+			height:50px;
+		}
+	
+		.controller img {
+			width:50px;
+			height:50px;
+		}
+
+		.roundSpace {
+			width:50px;
+			height:50px;
+			bottom:100px;
+			left:11%;
+		}
+	
+		.pauseBtnImg {
+			width:40px;
+			height:40px;
+			bottom:50px;
+			left:12%;
+		}
 	}
 }
