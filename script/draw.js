@@ -40,13 +40,18 @@ window.onload = () => {
 	//comstruct the leaderboard on document load
 	constructTableData();
 
+	//Since its dangerous to let the audio and music to be played on page load
+	//disable music and audio initialy. 
+	toggleAudio();
+	toggleMusic();
+
 	//add the sound effect to all menu btn
 	let x = document.querySelectorAll(".menuBtn");
-    for (let i = 0; i < x.length; i++) {
-        x[i].addEventListener("click", ()=> {
+    x.forEach( ele => {
+		ele.addEventListener("click", ()=> {
             playAudio(0);
         });
-    }
+	});
 
 	//adding event selection for the game
 	//only let user be able to change status if and only if they are in the
@@ -186,7 +191,6 @@ function stopGameLoop () {
 
 //controlers for mobile user
 function changeDirection (place) {
-	console.log(place);
 	switch (place) {
 		case 1:
 			direction = directionKey[0];

@@ -4,6 +4,9 @@ let song = document.getElementById("music"),
     //half the current volume
     song.volume = 0.5;
 
+//The available sound effects
+const effects = ["btnClick", "score", "poison", "slow", "speed", "pause", "wallhit", "start"];
+
 let audioVolume = 0.4,
     audioDisabled = false,
     musicDisabled = false;
@@ -20,7 +23,6 @@ function toggleAudio () {
         audioBtn.style.animation = "none";
         audioBtn.removeEventListener("mouseenter", startAudioHower);
     }
-    console.log(audioDisabled)
 }
 
 //need seperate function as the remover of event need the same structure as when we created the listener at first
@@ -46,9 +48,7 @@ function toggleMusic () {
         musicBtn.style.animation = "none";
         musicBtn.removeEventListener("mouseenter", startMusicHower);
     }
-    console.log(musicDisabled)
 }
-
 
 function startMusicHower () {
     musicBtn.style.animation = "animate50px 0.5s steps(3) infinite";
@@ -60,7 +60,6 @@ function stopMusicHower () {
 
 function changeMusicVolume(amount) {
     song.volume = amount;
-    console.log(amount)
 }
 
 function changeAudioVolume (amount) {
@@ -69,7 +68,6 @@ function changeAudioVolume (amount) {
 
 //Sound effect for the whole game in an array
 function playAudio (index) {
-    let effects = ["btnClick", "score", "poison", "slow", "speed", "pause", "wallhit", "start"];
     if (!audioDisabled) {
         let winSound = new Audio(`asset/audio/${effects[index]}.mp3`);
         winSound.volume = audioVolume;

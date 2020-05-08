@@ -32,28 +32,29 @@ function constructTableData (newHighPos) {
     let JSONData = localStorage.getItem("highScore");
     //incase there's no early data for the leaderboard
     if (JSONData != null) {
+
         scores = [];
         highScoreBoardBody.innerHTML = "";
         gameOverLeaderboard.innerHTML = "";
         parsedJSON = JSON.parse(JSONData);
         highScores = parsedJSON["highScores"];
-        for (let i = 0; i< highScores.length;i++) {
 
+        for (let i = 0; i< highScores.length;i++) {
             let currentRecord = highScores[i];
             //saving the scores in the array so that later can be used for checking new highScore
             scores.push(currentRecord["score"]);
 
             //seperate <tr> tag so that i could highlight the new records when user achieve a new highscore
             let tr = "<tr>";
-            if (newHighPos != null && newHighPos != undefined && i == newHighPos) {
+            if (newHighPos !== undefined && i == newHighPos) {
                 tr = "<tr style='color:yellow;'>";
             }
             let element = `
-                                <td>${i+1}</td>
-                                <td>${currentRecord["name"]}</td>
-                                <td>${currentRecord["score"]}</td>
-                                <td>${formatCurrentTime(currentRecord["date"])}</td>
-                           </tr>`;
+                            <td>${i+1}</td>
+                            <td>${currentRecord["name"]}</td>
+                            <td>${currentRecord["score"]}</td>
+                            <td>${formatCurrentTime(currentRecord["date"])}</td>
+                        </tr>`;
 
             if (gameStatus != -1) highScoreBoardBody.innerHTML += (tr + element);
             else gameOverLeaderboard.innerHTML += (tr + element);
@@ -78,22 +79,26 @@ function checkIfHighScore (checkScore) {
     let isNewHigh = false
     scoreIndex = 0;
     newScore = checkScore;
-    if (scores.length != 0) {
-        //if the scores array is less than 10, means that there's still empty, thus add smallest score to lower place
-        if (scores.length < 10) {
-            scores.push(0);
-        }
-        //find the score that has lower score than the current one
-        for (let i = 0; i< scores.length;i++) {
-            if (scores[i] <= checkScore) {
-                isNewHigh = true;
-                scoreIndex = i;
-                break;
+
+    //don't check anything if score lesser than 0
+    if (checkScore <=0) {
+        if (scores.length != 0) {
+            //if the scores array is less than 10, means that there's still empty, thus add smallest score to lower place
+            if (scores.length < 10) {
+                scores.push(0);
             }
+            //find the score that has lower score than the current one. If there's a score that's same with it, replace its position.
+            for (let i = 0; i< scores.length;i++) {
+                if (scores[i] <= checkScore) {
+                    isNewHigh = true;
+                    scoreIndex = i;
+                    break;
+                }
+            }
+        }else {
+            isNewHigh = true;
+            isNewHigh = false;
         }
-    }else {
-        isNewHigh = true;
-        if (checkScore <=0) isNewHigh = false;
     }
     constructMenu(isNewHigh);
 }
@@ -151,6 +156,7 @@ function getPlayerName () {
     }else {
         //merely filtering the input
         playerName = playerName.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        playerName = playerName.trim();
         submitBtn.style.display = "none";
         homeBtn.style.display = "block";
         restartBtn.style.display = "block";

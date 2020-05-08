@@ -1,6 +1,6 @@
 //left, up, right, down
-let defaultDirectionKey = [37, 38, 39, 40],
-	directionKey = defaultDirectionKey.slice();
+const defaultDirectionKey = [37, 38, 39, 40];
+let directionKey = defaultDirectionKey.slice();
 
 class Snake {
 	constructor (newX, newY) {
@@ -98,8 +98,6 @@ class Snake {
 					this.xSpeed = 1;
 					this.ySpeed = 0;
 				}
-			break;
-			case 32: 
 			break;
 		}
 	}

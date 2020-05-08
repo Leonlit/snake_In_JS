@@ -33,8 +33,9 @@ function showSettings () {
 function goBack() {
     menu.style.display = "block";
     shader.style.display = "none";
-    settings.className = "subMenu";
     gamePlay.style.display = "none";
+
+    settings.className = "subMenu";
     gameOverMenu.className = "subMenu";
     aboutSection.className = "subMenu";
     highScoreSection.className = "subMenu";

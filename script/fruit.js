@@ -33,7 +33,7 @@ class Food {
 		//want the fruit to be spawned at the upper or lefthand
 		//side of the game
 		this.x = Math.floor(Math.random() * (rows - 2) + 1);
-		this.y = Math.floor(Math.random()* (columns - 2) + 1);
+		this.y = Math.floor(Math.random() * (columns - 2) + 1);
 	}
 
 	draw () {
