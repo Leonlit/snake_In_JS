@@ -54,6 +54,10 @@
     #controllerTitle {
         display:none;
     }
+
+    #gameOverMenu {
+        height:60vh;
+    }
 }
 
 @keyframes animate80px{

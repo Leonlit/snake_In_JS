@@ -82,14 +82,10 @@ canvas {
 	font-size: 20px;
 }
 
-.roundSpace {
+.ctrlBtn {
 	position: fixed;
 	background-repeat: no-repeat;
-}
-
-.pauseBtnImg {
-	position: fixed;
-	background-repeat: no-repeat;
+	display: none;
 }
 
 @media screen and (max-width: 1024px) {
@@ -115,6 +111,10 @@ canvas {
 
 	.gameWidget #scoreCount{
 		font-size:38px;
+	}
+
+	.ctrlBtn{
+		display: block;
 	}
 
 	.controllerSpace {
