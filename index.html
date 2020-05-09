@@ -147,8 +147,21 @@
                     Next, if you're on a smartphone/tablet, you can use the controller that will be shown when you press start. The controls could be changed in the settings 
                     section (desktop/laptop user only). The goal of this game is to get as many score as you can while avoiding the snake from ramming into a wall or eating itself.
                 </p>
+                <h2>Controls</h2>
                 <p>
-                    In case you want to pause the game, you can do it by pressing the p button.
+                    <br><span>Desktop: </span><br>
+                    <ul>
+                        <li>arrow keys - Default controller to move the snake</li><br>
+                        <li>P - to pause or unpause the game</li>
+                    </ul>
+                </p>
+                <p>
+                    <br><span>Mobile/tablet:</span><br>
+                    <ul>
+                        <li>Onscreen key - move the snake according to key pressed</li><br>
+                        <li>Red button - start game</li><br>
+                        <li>Pink button - pause game</li>
+                    </ul>
                 </p>
                 <br>
                 <h2>Game features</h2>
@@ -237,9 +250,10 @@
                             <input id="keyForDown" placeholder="arrowDown"/>
                         </div>
                     </div>
-                </div><br><br>
-                <div>
-
+                </div><br><br><br>
+                <div id="settingAudioAndMusicToggle">
+                    <label>Disable Music</label><input type="checkbox" checked onclick="toggleMusic()"/><br>
+                    <label>Disable Audio</label><input type="checkbox" checked onclick="toggleAudio()"/><br>
                 </div>
                 <br><br>
                 <h2>Music volume</h2>
@@ -267,9 +281,7 @@
                                 <th>date, time</th>
                             </tr>
                         </thead>
-                        <tbody>
-
-                        </tbody>
+                        <tbody></tbody>
                     </table>
                 </div>
             </div>

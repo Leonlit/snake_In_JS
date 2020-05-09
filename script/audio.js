@@ -1,6 +1,9 @@
 let song = document.getElementById("music"),
     audioBtn = document.getElementById("audioSprite"),
-    musicBtn = document.getElementById("musicSprite");
+    musicBtn = document.getElementById("musicSprite"),
+    disableSectionSetting = document.getElementById("settingAudioAndMusicToggle"),
+    musicCheckox = disableSectionSetting.getElementsByTagName("input")[0],
+    audioCheckox = disableSectionSetting.getElementsByTagName("input")[1];
     //half the current volume
     song.volume = 0.5;
 
@@ -18,10 +21,12 @@ function toggleAudio () {
         audioBtn.addEventListener("mouseenter", startAudioHower);
         audioBtn.addEventListener("mouseout", stopAudioHower);
         audioBtn.style.backgroundPosition = "-100px"
+        audioCheckox.checked = false;
     }else {
         audioBtn.style.backgroundPosition = "-150px";
         audioBtn.style.animation = "none";
         audioBtn.removeEventListener("mouseenter", startAudioHower);
+        audioCheckox.checked = true;
     }
 }
 
@@ -42,11 +47,13 @@ function toggleMusic () {
         musicBtn.addEventListener("mouseenter", startMusicHower);
         musicBtn.addEventListener("mouseout", stopMusicHower);
         musicBtn.style.backgroundPosition = "0px"
+        musicCheckox.checked = false;
     }else {
         song.pause();
         musicBtn.style.backgroundPosition = "-150px";
         musicBtn.style.animation = "none";
         musicBtn.removeEventListener("mouseenter", startMusicHower);
+        musicCheckox.checked = true;
     }
 }
 

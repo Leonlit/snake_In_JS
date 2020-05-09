@@ -93,10 +93,22 @@ input:focus {
 
 .sectionWrapper p{
     text-indent:50px;
+    text-shadow: 1px 1px 2px black;
     text-align: justify;
     font-size:1.1em;
     line-height: 1.2;
     letter-spacing: -1px;
+}
+
+.sectionWrapper p span {
+    font-size:1.2em;
+    font-weight: 900;
+}
+
+.sectionWrapper ul{
+    font-size:1.1em;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px black;
 }
 
 .sectionWrapper a {
@@ -375,6 +387,17 @@ input:focus {
     margin-top:20px;
     box-shadow:none;
     cursor:pointer;
+}
+
+#settingAudioAndMusicToggle label {
+    font-size:1.6em;
+    text-shadow: 2px 2px 3px black;
+}
+
+#settingAudioAndMusicToggle input {
+    height:25px;
+    width:25px;
+    margin-left:100px;
 }
 
 /*------------------------------*/
