@@ -56,8 +56,8 @@ function constructTableData (newHighPos) {
                             <td>${formatCurrentTime(currentRecord["date"])}</td>
                         </tr>`;
 
-            if (gameStatus != -1) highScoreBoardBody.innerHTML += (tr + element);
-            else gameOverLeaderboard.innerHTML += (tr + element);
+            highScoreBoardBody.innerHTML += (tr + element);
+            gameOverLeaderboard.innerHTML += (tr + element);
         }
     }
 }
@@ -81,11 +81,12 @@ function checkIfHighScore (checkScore) {
     newScore = checkScore;
 
     //don't check anything if score lesser than 0
-    if (checkScore >0) {
+    if (checkScore > 0) {
         if (scores.length != 0) {
+            
             //if the scores array is less than 10, means that there's still empty, thus add smallest score to lower place
             if (scores.length < 10) {
-                scores.push(0);
+                scores.push(1);
             }
             //find the score that has lower score than the current one. If there's a score that's same with it, replace its position.
             for (let i = 0; i< scores.length;i++) {
@@ -112,7 +113,6 @@ function constructMenu(newHigh) {
     restartBtn.style.display = "block";
     noticeText.style.display = "none";
     newScoreCont.innerHTML = `Score :\t ${newScore}`;
-    constructTableData();
     if (newHigh) {
         homeBtn.style.display = "none";
         restartBtn.style.display = "none";
@@ -133,7 +133,7 @@ function saveNewHighScore (playerName) {
     for (let x = scores.length - 1; x > scoreIndex ;x--) {
         highScores[x] = highScores[x-1];
     }
-
+    
     //delete the scores that has exceeded #10
     //first need to check the length of the highscore array
     //then if there's more than 10, delete the rest while don't touch the remaining scores
@@ -142,6 +142,7 @@ function saveNewHighScore (playerName) {
     }
 
     highScores[scoreIndex] = newData;
+    scores[scoreIndex] = newScore;
     localStorage.setItem("highScore", JSON.stringify({highScores: highScores}));
     //updating the table data
     constructTableData(scoreIndex);
@@ -166,6 +167,7 @@ function getPlayerName () {
 
 //can't use the original gameOver() function as need to hide the game over menu
 function startGameAgain () {
+    constructTableData();
     restartGame();
     gameOverMenu.scrollTop = 0;
     gameOverMenu.className = "subMenu";

@@ -76,12 +76,12 @@
     }
 
     #settingAudioAndMusicToggle label {
-        font-size:1.1em;
+        font-size:1.5em;
     }
     
     #settingAudioAndMusicToggle input {
-        height:20px;
-        width:20px;
+        height:40px;
+        width:40px;
         margin-left:20px;
     }
 }
@@ -230,6 +230,17 @@
         top:-10px;
         cursor: pointer;
     }
+
+    #settingAudioAndMusicToggle label {
+        font-size:1.3em;
+    }
+    
+    #settingAudioAndMusicToggle input {
+        height:25px;
+        width:25px;
+        margin-left:20px;
+    }
+
 }
 
 @media screen and (max-width: 400px){
