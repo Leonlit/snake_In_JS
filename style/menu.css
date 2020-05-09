@@ -321,6 +321,15 @@ input:focus {
     height:100vh;
 }
 
+#closePauseMenuBtn {
+    position: absolute;
+    right: 20px;
+    font-size: 3em;
+    font-weight: 900;
+    top:-10px;
+    cursor: pointer;
+}
+
 
 /*------------------------------*/
 /*       Settings Section       */
