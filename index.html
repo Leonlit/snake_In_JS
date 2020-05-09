@@ -21,7 +21,7 @@
         <div id="mainMenu" class="menus">
             <h1 class="menuTitle menuBtn">Snake Game</h1>
             
-            <div class="bigWidgetSection centerContainer">
+            <div class="bigWidgetSection centerContainer center">
                 <div class="bigBtn menuBtn" onclick="showAboutSection()">
                     <div id="aboutSprite"></div>
                 </div>
@@ -93,8 +93,8 @@
                 <h1 id="gameOverTitle">Game Over</h1>
                 <h2 class="subTitle" id="newHighText">New HighScore</h2>
                 <div id="performance" class="centerContainer">
-                    <div id="newPlayerScore">Score: 1232321321</div>
-                    <div id="position">position : 1</div><br>
+                    <div id="newPlayerScore"></div>
+                    <div id="position"></div><br>
                 </div><br>
                 <div id="playerNameCont">
                     <input id="getPlayerName" placeholder="Your name"/>
@@ -158,16 +158,16 @@
                     <div class="scrollable">
                         <table>
                             <tr>
-                                <td>Color image</td>
-                                <td>Color</td>
-                                <td>Score</td>
-                                <td>Side Effect</td>
+                                <thead>
+                                    <th>Color</th>
+                                    <th>Score</th>
+                                    <th>Side Effect</th>
+                                </thead>
                             </tr>
                             <tr>
                                 <td>
                                     <div id="redBox"></div>
                                 </td>
-                                <td>Red</td>
                                 <td>-20</td>
                                 <td>Reduce score and snake length</td>
                             </tr>
@@ -175,7 +175,6 @@
                                 <td>
                                     <div id="greenBox"></div>
                                 </td>
-                                <td>Green</td>
                                 <td>+10</td>
                                 <td>Increase score and snake length</td>
                             </tr>
@@ -183,7 +182,6 @@
                                 <td>
                                     <div id="yellowBox"></div>
                                 </td>
-                                <td>yellow</td>
                                 <td>+5</td>
                                 <td>Increases score,snake moving speed and length</td>
                             </tr>
@@ -191,7 +189,6 @@
                                 <td>
                                     <div id="darkGreenBox"></div>
                                 </td>
-                                <td>Dark green</td>
                                 <td>+5</td>
                                 <td>Increases score, reduce snake speed and increase its length</td>
                             </tr>
@@ -241,9 +238,13 @@
                         </div>
                     </div>
                 </div><br><br>
-                <h2>Change music volume</h2>
+                <div>
+
+                </div>
+                <br><br>
+                <h2>Music volume</h2>
                 <input type="range" id="musicVolumeChanger" max="1" min="0" step="0.01"  value="0.4" oninput="changeMusicVolume(this.value)"/>
-                <h2>Change audio volume</h2>
+                <h2>Audio volume</h2>
                 <input type="range" id="audioVolumeChanger" max="1" min="0" step="0.01"  value="0.4" oninput="changeAudioVolume(this.value)"/>
                 
             </div>
@@ -255,7 +256,7 @@
                 <div class="backToHome menuBtn" onclick="goBack()">
                     <img src="asset/sprite/goBack_80px.png"/>
                 </div>
-                <h1>LeaderBoard</h1><br><br><hr><br><br>
+                <h1>HighScore</h1><br><br><hr><br><br>
                 <div class="scrollable">
                     <table id="highScoreBoard">
                         <thead>

@@ -81,7 +81,7 @@ function checkIfHighScore (checkScore) {
     newScore = checkScore;
 
     //don't check anything if score lesser than 0
-    if (checkScore <=0) {
+    if (checkScore >0) {
         if (scores.length != 0) {
             //if the scores array is less than 10, means that there's still empty, thus add smallest score to lower place
             if (scores.length < 10) {
@@ -97,7 +97,6 @@ function checkIfHighScore (checkScore) {
             }
         }else {
             isNewHigh = true;
-            isNewHigh = false;
         }
     }
     constructMenu(isNewHigh);
@@ -168,5 +167,6 @@ function getPlayerName () {
 //can't use the original gameOver() function as need to hide the game over menu
 function startGameAgain () {
     restartGame();
+    gameOverMenu.scrollTop = 0;
     gameOverMenu.className = "subMenu";
 }

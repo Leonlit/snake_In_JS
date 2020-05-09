@@ -6,8 +6,24 @@
         top:50%;
     }
 
+    #gameOverTitle {
+        font-size:4em;
+    }
+
+    #performance div{
+        font-size: 2em;
+    }
+
+    .gameOverBtn {
+        font-size: 1.7em;
+    }
+
+    .sectionWrapper table {
+        font-size:1.2em;
+    }
+
     .bigWidgetSection {
-        margin-top:10%;
+        margin-top:12%;
         margin-bottom:5%;
         width:500px;
         height:110px;
@@ -60,6 +76,150 @@
     }
 }
 
+@media screen and (max-width: 600px){
+    #mainMenu {
+        height:500px;
+    }
+    
+    .menus {
+        width:85%;
+        height:55%;
+        padding:2%;
+        top:50%;
+    }
+
+    .menuTitle {
+        font-size:1.5em;
+    }
+
+    #gameOverTitle {
+        font-size:1.8em;
+    }
+
+    #performance div{
+        font-size: 1.2em;
+    }
+
+    .gameOverBtn {
+        font-size: 0.8em;
+    }
+
+    .bigWidgetSection {
+        margin-top:12%;
+        margin-bottom:5%;
+        width:205px;
+        height:auto;
+    }
+
+    #gameStartSprite {
+        background: url("../asset/sprite/playBtn_60px.png") 0px 0px ;
+    }
+    
+    #highScoreSprite {
+        background: url("../asset/sprite/highScore_60px.png") 0px 0px ;   
+    }
+    
+    #aboutSprite {
+        background: url("../asset/sprite/about_60px.png") 0px 0px; 
+    }
+    
+    #settings {
+        background: url("../asset/sprite/settings_60px.png");  
+    }
+
+    .bigBtn div:hover {
+        animation:animate60px 1s steps(5) infinite; 
+    }
+    
+    .bigBtn div{
+        width:60px;
+        height:60px;
+    }
+
+    #pauseMenu {
+        width:300px;
+        height:180px;
+    }
+
+    .subTitle {
+        font-size: 1.5em;
+    }
+
+    #pauseMenu .center div{
+        margin-left:5px;
+    }
+
+    #pauseMenu div img{
+        width:40px;
+        height:40px;
+    }
+
+    #gameOverMenu {
+        height:60vh;
+    }
+
+    .sectionWrapper p{
+        font-size:0.8em;
+    }
+
+    .sectionWrapper h2 {
+        font-size:1.2em;
+    }
+
+    .sectionWrapper h1 {
+        font-size:1.5em;
+    }
+    
+    .sectionWrapper table, .sectionWrapper td, .sectionWrapper tr, .sectionWrapper th {
+        border:2px solid white;
+        padding:0;
+    }
+
+    .sectionWrapper thead th{
+        padding:2px;
+        font-size:0.6em;
+    }
+
+    .sectionWrapper table td {
+        font-size:0.5em;
+        padding:4px;
+    }
+    
+    .backToHome img {
+        width:40px;
+        height:40px;
+    }
+
+    .sectionWrapper table tr td div {
+        width:20px;
+        height:20px;
+        margin-left:15px;
+    }
+
+    #socialMedias {
+        margin-top:5%;
+        width:180px;
+    }
+    
+    #socialMedias div {
+        width:50px;
+        height:50px;
+        display: inline-block;
+        margin-left:20px;
+    }
+
+    #socialMedias img {
+        width:50px;
+        height:50px;
+    }
+}
+
+@media screen and (max-width: 400px){
+    #mainMenu {
+        height:400px;
+    }
+}
+
 @keyframes animate80px{
     from {
         background-position:0px;
@@ -69,6 +229,11 @@
     }
 }
 
-@media screen and (max-width: 600px){
-
+@keyframes animate60px{
+    from {
+        background-position:0px;
+    }
+    to {
+        background-position: -300px;
+    }
 }
