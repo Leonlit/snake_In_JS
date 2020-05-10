@@ -19,7 +19,7 @@
     }
 
     .sectionWrapper table {
-        font-size:1.2em;
+        font-size:1em;
     }
 
     .bigWidgetSection {
@@ -83,6 +83,12 @@
         height:40px;
         width:40px;
         margin-left:20px;
+    }
+
+    @media (max-height: 700px) {
+        .menus {
+            height:60%;
+        }
     }
 }
 

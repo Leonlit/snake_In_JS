@@ -201,8 +201,8 @@ canvas {
 
 @media screen and (max-width: 650px){
 	canvas {
-		height:40vh;
-		width:80vw;
+		height:400px;
+		width:400px;
 		top:280px;
 	}
 
