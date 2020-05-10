@@ -7,9 +7,6 @@ let song = document.getElementById("music"),
     //half the current volume
     song.volume = 0.5;
 
-//The available sound effects
-const effects = ["btnClick", "score", "poison", "slow", "speed", "pause", "wallhit", "start"];
-
 let audioVolume = 0.4,
     audioDisabled = false,
     musicDisabled = false;
@@ -74,10 +71,14 @@ function changeAudioVolume (amount) {
 }
 
 //Sound effect for the whole game in an array
+//The available sound effects
+//["btnClick", "score", "poison", "slow", "speed", "pause", "wallhit", "start"];
 function playAudio (index) {
     if (!audioDisabled) {
-        let winSound = new Audio(`asset/audio/${effects[index]}.mp3`);
-        winSound.volume = audioVolume;
-        winSound.play();
+        let audio = document.getElementById("soundEffects");
+        let source = audio.getElementsByTagName("audio")[index];
+        console.log(audio, source)
+        source.volume = audioVolume;
+        source.play();
     }
 }

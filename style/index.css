@@ -3,6 +3,10 @@ body {
 	color:white;
 }
 
+#soundEffects {
+	display:none;
+}
+
 canvas {
 	position:fixed;
 	top:54%;
