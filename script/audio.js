@@ -77,7 +77,6 @@ function playAudio (index) {
     if (!audioDisabled) {
         let audio = document.getElementById("soundEffects");
         let source = audio.getElementsByTagName("audio")[index];
-        console.log(audio, source)
         source.volume = audioVolume;
         source.play();
     }

@@ -18,15 +18,13 @@ class Snake {
 	}
 
 	draw () {
-		ctx.fillStyle = "#FFFFFF";
-		ctx.fillRect(this.x, this.y, box, box);
-
 		//color change from yellow to dark brown
-		ctx.fillStyle = "#f2f23f";
 		for (let i=0;i<this.tail.length;i++) {
 			ctx.fillStyle = `rgb(${255-(2*i)},${255-(5*i)},0)`;
 			ctx.fillRect(this.tail[i].x, this.tail[i].y, box, box);
 		}
+		ctx.fillStyle = "#FFFFFF";
+		ctx.fillRect(this.x, this.y, box, box);
 	}
 
 	//if the snake is on-top of a food return true
