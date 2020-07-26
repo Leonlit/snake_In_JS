@@ -4,16 +4,20 @@ let pauseMenu = document.getElementById("pauseMenu");
 //pausing the game by showing relevent menu  and image while stopping the game loop
 //and play a sound when menu pressed
 function pauseGame () {
-    if (!paused && gameStatus != -1 ) {
-        paused = true;
-        showPauseMenu()
-        stopGameLoop();
-        playAudio(5)
-    }else {
-        hidePauseMenu();
-        unpauseGame();
-        paused = false;
-        playAudio(5)
+    //if the settings menu is visible, disable opening and closing pause menu functionality
+    if (settings.className != "menus") {
+        //since in the 
+        if (!paused && gameStatus != -1) {
+            paused = true;
+            showPauseMenu();
+            stopGameLoop();
+            playAudio(5)
+        }else {
+            hidePauseMenu();
+            unpauseGame();
+            paused = false;
+            playAudio(5)
+        }
     }
 }
 

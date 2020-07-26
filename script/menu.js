@@ -39,8 +39,9 @@ function goBack() {
     gameOverMenu.className = "subMenu";
     aboutSection.className = "subMenu";
     highScoreSection.className = "subMenu";
-        
-    //if the trigger is triggered from in-game reset every game data's and stop all game loops
+    console.log(settingFromPause)
+
+    //if the trigger is triggered from in-game, reset every game data's and stop all game loops
     if (gameBoardShown && !settingFromPause) {
         gameBoardShown = !gameBoardShown;
         paused = false;
