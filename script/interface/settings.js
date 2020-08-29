@@ -21,28 +21,7 @@ function changeDirectionKey (event) {
         text = String.fromCharCode(code).toLocaleLowerCase()
         //check whether there's a same key inside the direction array, if yes then dont change the key
         if (!duplicate) {
-            //dont support special character
-            
-            //switch the key according to the changes
-            switch (target) {
-                case "keyForLeft":
-                    directionKey[0] = code;
-                break;
-
-                case "keyForUp":
-                    directionKey[1] = code;
-                break;
-
-                case "keyForRight":
-                    directionKey[2] = code;
-                break;
-                    
-                case "keyForDown":
-                    directionKey[3] = code;
-                break;
-                default:
-                    console.log("something went wrong");
-            }
+            changeTheKey(target, code);
         }else{
             //if the value is duplicated and the character is an alphabets or number,
             //remove the newly added text while keep the previous character
@@ -55,6 +34,30 @@ function changeDirectionKey (event) {
         text = string.replace(string[event.target.selectionStart - 1],"");
     }
     inputField.value = text;
+}
+
+function changeTheKey (target, code) {
+    //dont support special character
+    //switch the key according to the changes
+    switch (target) {
+        case "keyForLeft":
+            directionKey[0] = code;
+        break;
+
+        case "keyForUp":
+            directionKey[1] = code;
+        break;
+
+        case "keyForRight":
+            directionKey[2] = code;
+        break;
+            
+        case "keyForDown":
+            directionKey[3] = code;
+        break;
+        default:
+            console.log("something went wrong");
+    }
 }
 
 //incase the field is empty, use back default controls

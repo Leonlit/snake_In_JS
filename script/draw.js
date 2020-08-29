@@ -127,7 +127,16 @@ function update () {
 	});
 
 	snake.draw();
+	checkSnakeEatFood(food, snake);
+	
+	//adding colliding mechanism for the border with the snake, game over if true;
+	if (snake.x >= canvas.width-box || snake.x <= 0 || snake.y >= canvas.height-box || snake.y <= 0 ) {
+		gameOver();
+		playAudio(6);
+	}
+}
 
+function checkSnakeEatFood (food, snake) {
 	//perform a check for all the element inside the food array 
 	//whether the snake head has collided with them
 	food.forEach ((currFood, index)=> {
@@ -150,12 +159,6 @@ function update () {
 			interval = setInterval(update,speed);
 		}
 	});
-	
-	//adding colliding mechanism for the border with the snake, game over if true;
-	if (snake.x >= canvas.width-box || snake.x <= 0 || snake.y >= canvas.height-box || snake.y <= 0 ) {
-		gameOver();
-		playAudio(6);
-	}
 }
 
 //reset everthing 
