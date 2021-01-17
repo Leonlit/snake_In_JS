@@ -2,10 +2,7 @@
 A snake game using pure JS, HTML, and CSS. The game is responsive and I've tested it in several devices. The game has a highscore system as well as a settings section where computer's user could change the key for moving the snake and adjusting the audio and music volume. 
 
 ## Contact
-If you have any question or suggestion regarding the project, feel free to contact me.
-### [leonlit](https://github.com/Leonlit) :
- - [twitter](https://twitter.com/leonlit)
- - [email](leonlit123@gmail.com)
+If you have any question or suggestion regarding the project, feel free to open up an issue in the issues section
 
 
 ## Screenshot of the game
